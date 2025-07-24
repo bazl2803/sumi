@@ -1,15 +1,6 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
 import {
@@ -20,15 +11,15 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { NewProductForm } from "@/modules/product/components/new-product-form";
 import {
   LucideShare,
-  LucidePlus,
   LucideFilter,
   LucideBox,
   LucideMoreVertical,
+  LucidePlus,
 } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 const ProductPage = () => (
   <div className="h-screen w-screen p-4">
@@ -40,7 +31,11 @@ const ProductPage = () => (
             <Button size="icon" variant="outline" disabled>
               <LucideShare />
             </Button>
-            <NewProductForm />
+            <Link href={"products/new"}>
+              <Button>
+                <LucidePlus /> Nuevo Producto
+              </Button>
+            </Link>
           </div>
         </div>
         <div className="flex flex-nowrap gap-2 px-4 py-0">
@@ -81,10 +76,10 @@ const ProductPage = () => (
                           />
                         </div>
                         <div className="flex flex-col gap-1">
-                          <span>0150034521</span>
-                          <span className="text-pretty">
-                            Lámpara colgante moderna negro 3 luces e27 21268
+                          <span className="line-clamp-1">
+                            Lámpara colgante moderna negro 3 luces
                           </span>
+                          <span className="text-neutral-500">e27 21268</span>
                         </div>
                       </div>
                     </div>

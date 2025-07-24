@@ -1,0 +1,129 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+// User Document Scheme
+model User {
+  id          String       @id @default(auto()) @map("_id") @db.ObjectId
+  email       String       @unique
+  name        String?
+  role        Role?
+  permissions Permission[]
+  Order       Order[]
+}
+
+enum Role {
+  ADMIN
+}
+
+type Permission {
+  name PermissionType
+}
+
+enum PermissionType {
+  ALLOW_CREATEUSER
+  ALLOW_UPDATEUSER
+  ALLOW_DELETEUSER
+  ALLOW_CREATEPRODUCT
+  ALLOW_UPDATEPRODUCT
+  ALLOW_DELETEPRODUCT
+}
+
+// Product Document Scheme
+model Product {
+  id          String           @id @default(auto()) @map("_id") @db.ObjectId
+  gallery     String[]
+  name        String
+  description String?
+  sku         String?          @unique
+  stock       Int              @default(0)
+  measureUnit String?          @default("unit")
+  price       Int
+  category    Category         @relation(fields: [categoryId], references: [id])
+  categoryId  String           @db.ObjectId
+  brand       Brand            @relation(fields: [brandId], references: [id])
+  brandId     String           @db.ObjectId
+  variants    ProductVariant[]
+  specs       Spec[]
+  meta        Meta
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
+  Order       Order?           @relation(fields: [orderId], references: [id])
+  orderId     String?          @db.ObjectId
+}
+
+model Brand {
+  id        String    @id @default(auto()) @map("_id") @db.ObjectId
+  thumbnail String
+  name      String
+  products  Product[]
+}
+
+model Category {
+  id        String    @id @default(auto()) @map("_id") @db.ObjectId
+  thumbnail String
+  name      String
+  products  Product[]
+}
+
+type Meta {
+  sales       Int
+  reviews     Int
+  tags        Tag[]
+  collections String[]
+}
+
+enum Tag {
+  HOT
+  NEW
+  FEATURED
+  BEST_SELLER
+}
+
+type Spec {
+  name  String
+  value String
+}
+
+type ProductVariant {
+  options Option[]
+  stock   Int
+  sku     String?
+  price   Int
+}
+
+type Option {
+  name  String
+  value String
+}
+
+// Order Document Scheme
+model Order {
+  id        String      @id @default(auto()) @map("_id") @db.ObjectId
+  user      User        @relation(fields: [userId], references: [id])
+  products  Product[]
+  total     Int
+  status    OrderStatus
+  createdAt DateTime    @default(now())
+  userId    String      @db.ObjectId
+}
+
+enum OrderStatus {
+  PENDING
+  PROCESSING
+  SHIPPED
+  DELIVERED
+  CANCELLED
+}
