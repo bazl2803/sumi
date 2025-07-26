@@ -13,10 +13,9 @@ import {
 import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import prisma from "@/lib/prisma";
-
 import { useForm } from "react-hook-form";
 import z from "zod";
-import { PrismaClient } from "@prisma/client";
+import { createProduct } from "../actions/create-product";
 
 const formSchema = z.object({
   thumbnail: z.string(),
@@ -40,7 +39,7 @@ export const ProductForm = () => {
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    await prisma.
+    await createProduct(values);
   }
 
   return (
