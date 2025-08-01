@@ -1,4 +1,11 @@
+import prisma from "@/lib/prisma";
+
 export async function createProduct(values: any) {
-    // TODO: Implement create product logic here
-    console.log(values);
+  "use server";
+
+  await prisma.product.create({
+    data: {
+      ...values,
+    },
+  });
 }

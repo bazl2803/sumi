@@ -1,7 +1,5 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
 import {
   Table,
@@ -11,15 +9,8 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import {
-  LucideShare,
-  LucideFilter,
-  LucideBox,
-  LucideMoreVertical,
-  LucidePlus,
-} from "lucide-react";
+import { LucideBox, LucideMoreVertical } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 
 const ProductPage = () => (
   <div className="p-4">
