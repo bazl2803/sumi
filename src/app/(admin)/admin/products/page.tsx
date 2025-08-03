@@ -1,5 +1,9 @@
 "use client";
 import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Separator } from "@/components/ui/separator";
+import { SidebarTrigger } from "@/components/ui/sidebar";
 import { Switch } from "@/components/ui/switch";
 import {
   Table,
@@ -9,70 +13,35 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { LucideBox, LucideMoreVertical } from "lucide-react";
+import { LucideBox, LucideMoreVertical, LucidePlus } from "lucide-react";
 import Image from "next/image";
+import { ProductsTable } from "./components/products-table";
+import { NewProductDialog } from "./components/newproduct-dialog";
 
 const ProductPage = () => (
-  <div className="p-4">
-    <Table>
-      <TableHeader>
-        <TableRow>
-          <TableHead className="w-fit">Producto</TableHead>
-          <TableHead className="text-center">Marca</TableHead>
-          <TableHead className="text-center">Visibilidad</TableHead>
-          <TableHead className="text-center">Existencia</TableHead>
-          <TableHead className="text-center">Precio</TableHead>
-          <TableHead></TableHead>
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        <TableRow className="select-none">
-          <TableCell>
-            <div className="flex flex-row items-center gap-2">
-              <div className="flex flex-col gap-1">
-                <div className="flex flex-row items-center gap-4">
-                  <div className="h-15 min-h-15 w-15 min-w-15 overflow-hidden rounded-xl border bg-white p-2">
-                    <Image
-                      className="object-cover mix-blend-multiply"
-                      src="/9ccefc86-cd42-43c1-bd73-bf8ba834e561.jpg"
-                      alt="product1"
-                      width={100}
-                      height={100}
-                    />
-                  </div>
-                  <div className="flex flex-col gap-1">
-                    <span className="line-clamp-1">
-                      Lámpara colgante moderna negro 3 luces
-                    </span>
-                    <span className="text-neutral-500">e27 21268</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </TableCell>
-          <TableCell>
-            <div className="text-center font-medium">N/A</div>
-          </TableCell>
-          <TableCell>
-            <div className="flex flex-row items-center justify-center gap-2 text-center">
-              <Switch />
-            </div>
-          </TableCell>
-          <TableCell>
-            <div className="flex flex-row items-center justify-center gap-2">
-              <LucideBox />
-              11
-            </div>
-          </TableCell>
-          <TableCell className="text-center">${(100).toFixed(2)}</TableCell>
-          <TableCell>
-            <Button variant="ghost" size="icon">
-              <LucideMoreVertical />
-            </Button>
-          </TableCell>
-        </TableRow>
-      </TableBody>
-    </Table>
+  <div className="flex flex-col gap-2">
+    <header className="flex h-14 w-full items-center justify-between gap-1 px-4 lg:gap-2 lg:px-6">
+      <div className="flex flex-row items-center">
+        <SidebarTrigger className="-ml-1" />
+        <Separator
+          orientation="vertical"
+          className="mx-2 data-[orientation=vertical]:h-4"
+        />
+        <h1 className="text-base font-medium">Productos</h1>
+      </div>
+      <NewProductDialog />
+    </header>
+
+    <div className="px-4 lg:gap-2 lg:px-6">
+      <form>
+        <Input
+          placeholder="Buscar producto"
+          className="w-full lg:max-w-xs"
+          type="search"
+        />
+      </form>
+      <ProductsTable />
+    </div>
   </div>
 );
 

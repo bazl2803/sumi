@@ -1,40 +1,16 @@
-import { Card } from "@/components/ui/card";
 import {
-  Sidebar,
-  SidebarContent,
-  SidebarGroup,
-  SidebarGroupContent,
-  SidebarGroupLabel,
   SidebarInset,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
+import { DashboardSidebar } from "./_components/dashboard-sidebar";
 
 const AdminLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div>
       <SidebarProvider>
-        <Sidebar>
-          <SidebarContent>
-            <SidebarGroup>
-              <SidebarGroupLabel>Colecciones</SidebarGroupLabel>
-              <SidebarGroupContent>
-                <SidebarMenu>
-                  <SidebarMenuItem title="Products">
-                    
-                  </SidebarMenuItem>
-                </SidebarMenu>
-              </SidebarGroupContent>
-            </SidebarGroup>
-          </SidebarContent>
-        </Sidebar>
-        <SidebarInset>
-          <SidebarTrigger />
-          {children}
-        </SidebarInset>
+        <DashboardSidebar variant="inset" />
+        <SidebarInset>{children}</SidebarInset>
       </SidebarProvider>
     </div>
   );
