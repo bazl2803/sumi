@@ -55,7 +55,7 @@ export const ProductForm = () => {
 
   return (
     <Form {...form}>
-      <ScrollArea className="h-[400px]">
+      <ScrollArea>
         <form
           className="flex flex-col gap-8 bg-white"
           onSubmit={form.handleSubmit(onSubmit)}

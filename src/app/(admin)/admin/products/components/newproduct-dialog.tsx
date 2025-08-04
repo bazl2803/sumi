@@ -5,7 +5,6 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import { ProductForm } from "@/products/components/product-form";
 import { DialogTrigger } from "@radix-ui/react-dialog";
 import { LucidePlus } from "lucide-react";
@@ -19,7 +18,7 @@ export const NewProductDialog = () => {
           Agregar producto
         </Button>
       </DialogTrigger>
-      <DialogContent className="w-[380px]">
+      <DialogContent>
         <DialogHeader>
           <DialogTitle>Nuevo Producto</DialogTitle>
         </DialogHeader>

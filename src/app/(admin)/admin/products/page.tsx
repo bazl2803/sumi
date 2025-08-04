@@ -32,7 +32,7 @@ const ProductPage = () => (
       <NewProductDialog />
     </header>
 
-    <div className="px-4 lg:gap-2 lg:px-6">
+    <div className="flex flex-col gap-2 px-4 lg:gap-2 lg:px-6">
       <form>
         <Input
           placeholder="Buscar producto"
