@@ -13,7 +13,7 @@ export const NewProductDialog = () => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="default">
+        <Button>
           <LucidePlus />
           Agregar producto
         </Button>

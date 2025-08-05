@@ -1,5 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { Collection } from "@/components/ui/collection.component";
+import { Collection } from "@/components/ui/collection";
 
 export default function Home() {
   return (

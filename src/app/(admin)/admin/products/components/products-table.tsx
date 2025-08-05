@@ -18,7 +18,6 @@ export const ProductsTable = () => {
         <TableRow>
           <TableHead className="w-fit">Producto</TableHead>
           <TableHead className="text-center">Marca</TableHead>
-          <TableHead className="text-center">Visibilidad</TableHead>
           <TableHead className="text-center">Existencia</TableHead>
           <TableHead className="text-center">Precio</TableHead>
           <TableHead></TableHead>
@@ -51,11 +50,6 @@ export const ProductsTable = () => {
           </TableCell>
           <TableCell>
             <div className="text-center font-medium">N/A</div>
-          </TableCell>
-          <TableCell>
-            <div className="flex flex-row items-center justify-center gap-2 text-center">
-              <Switch />
-            </div>
           </TableCell>
           <TableCell>
             <div className="flex flex-row items-center justify-center gap-2">
