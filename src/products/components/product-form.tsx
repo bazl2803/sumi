@@ -55,117 +55,124 @@ export const ProductForm = () => {
 
   return (
     <Form {...form}>
-      <ScrollArea>
-        <form
-          className="flex flex-col gap-8 bg-white"
-          onSubmit={form.handleSubmit(onSubmit)}
-        >
-          <section className="space-y-4">
-            <div>
-              <h2 className="text-lg font-semibold">
-                Información del Producto
-              </h2>
-              <p className="text-muted-foreground text-sm">
-                Completa los detalles del producto.
-              </p>
-            </div>
+      <form
+        className="flex flex-col gap-8 overflow-auto bg-white"
+        onSubmit={form.handleSubmit(onSubmit)}
+      >
+        <section className="space-y-4">
+          <div>
+            <h2 className="text-lg font-semibold">Información del Producto</h2>
+            <p className="text-muted-foreground text-sm">
+              Completa los detalles del producto.
+            </p>
+          </div>
 
-            <FormField
-              control={form.control}
-              name="name"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Nombre</FormLabel>
+          <FormField
+            control={form.control}
+            name="name"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Nombre</FormLabel>
+                <FormControl>
+                  <Input placeholder="Nombre del producto" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="name"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Descripción</FormLabel>
+                <FormControl>
+                  <Textarea placeholder="shadcn" {...field} />
+                </FormControl>
+                <FormDescription>Breve resumén del producto</FormDescription>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </section>
+
+        <section className="space-y-4">
+          <div>
+            <h2 className="text-lg font-semibold">Galería</h2>
+            <p className="text-muted-foreground text-sm">
+              Agrega imágenes del producto.
+            </p>
+          </div>
+
+          <FormField
+            control={form.control}
+            name="gallery"
+            render={({ field: { onChange, value, ...field } }) => (
+              <FormItem>
+                <FormLabel>Imágenes</FormLabel>
+                <FormControl>
+                  <Input
+                    accept={ACCEPTED_IMAGE_TYPES.join(",")}
+                    type="file"
+                    multiple
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </section>
+
+        <section className="space-y-4">
+          <div>
+            <h2 className="text-lg font-semibold">Categoría</h2>
+            <p className="text-muted-foreground text-sm">
+              Selecciona la categoría del producto.
+            </p>
+          </div>
+
+          <FormField
+            control={form.control}
+            name="categoryId"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Categoría</FormLabel>
+                <Select
+                  onValueChange={field.onChange}
+                  defaultValue={field.value}
+                >
                   <FormControl>
-                    <Input placeholder="Nombre del producto" {...field} />
+                    <SelectTrigger className="w-full">
+                      <SelectValue placeholder="Selecciona una categoría" />
+                    </SelectTrigger>
                   </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+                  <SelectContent>
+                    <SelectItem value="electronics">Electrónica</SelectItem>
+                    <SelectItem value="clothing">Ropa</SelectItem>
+                    <SelectItem value="accessories">Accesorios</SelectItem>
+                  </SelectContent>
+                </Select>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </section>
 
-            <FormField
-              control={form.control}
-              name="name"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Descripción</FormLabel>
-                  <FormControl>
-                    <Textarea placeholder="shadcn" {...field} />
-                  </FormControl>
-                  <FormDescription>Breve resumén del producto</FormDescription>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </section>
+        <section>
+          <div>
+            <h2 className="text-lg font-semibold">Variantes</h2>
+            <p className="text-muted-foreground text-sm">
+              Configura las variantes del producto.
+            </p>
+          </div>
 
-          <section className="space-y-4">
-            <div>
-              <h2 className="text-lg font-semibold">Galería</h2>
-              <p className="text-muted-foreground text-sm">
-                Agrega imágenes del producto.
-              </p>
-            </div>
+          <Input />
+        </section>
 
-            <FormField
-              control={form.control}
-              name="gallery"
-              render={({ field: { onChange, value, ...field } }) => (
-                <FormItem>
-                  <FormLabel>Imágenes</FormLabel>
-                  <FormControl>
-                    <Input
-                      accept={ACCEPTED_IMAGE_TYPES.join(",")}
-                      type="file"
-                      multiple
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </section>
-
-          <section className="space-y-4">
-            <div>
-              <h2 className="text-lg font-semibold">Categoría</h2>
-              <p className="text-muted-foreground text-sm">
-                Selecciona la categoría del producto.
-              </p>
-            </div>
-
-            <FormField
-              control={form.control}
-              name="categoryId"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Categoría</FormLabel>
-                  <Select
-                    onValueChange={field.onChange}
-                    defaultValue={field.value}
-                  >
-                    <FormControl>
-                      <SelectTrigger className="w-full">
-                        <SelectValue placeholder="Selecciona una categoría" />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      <SelectItem value="electronics">Electrónica</SelectItem>
-                      <SelectItem value="clothing">Ropa</SelectItem>
-                      <SelectItem value="accessories">Accesorios</SelectItem>
-                    </SelectContent>
-                  </Select>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </section>
-
-          <Button>Guardar</Button>
-        </form>
-      </ScrollArea>
+        <Button>Guardar</Button>
+      </form>
     </Form>
   );
 };
