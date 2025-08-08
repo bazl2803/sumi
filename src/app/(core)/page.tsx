@@ -1,46 +1,13 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Collection } from "@/components/ui/collection";
+import { MainNavbar } from "./__components/main-navbar";
+import Hero from "./__components/hero";
 
 export default function Home() {
   return (
-    <div>
-        <Collection>
-          <Collection.Item>
-            <Card>
-              <CardContent>item</CardContent>
-            </Card>
-          </Collection.Item>
-          <Collection.Item>
-            <Card>
-              <CardContent>item</CardContent>
-            </Card>
-          </Collection.Item>
-          <Collection.Item>
-            <Card>
-              <CardContent>item</CardContent>
-            </Card>
-          </Collection.Item>
-          <Collection.Item>
-            <Card>
-              <CardContent>item</CardContent>
-            </Card>
-          </Collection.Item>
-          <Collection.Item>
-            <Card>
-              <CardContent>item</CardContent>
-            </Card>
-          </Collection.Item>
-          <Collection.Item>
-            <Card>
-              <CardContent>item</CardContent>
-            </Card>
-          </Collection.Item>
-          <Collection.Item>
-            <Card>
-              <CardContent>item</CardContent>
-            </Card>
-          </Collection.Item>
-        </Collection>
+    <div className="flex min-h-screen w-full flex-col">
+      <MainNavbar />
+      <Hero />
     </div>
   );
 }

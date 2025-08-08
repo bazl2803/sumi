@@ -56,7 +56,7 @@ export const ProductForm = () => {
   return (
     <Form {...form}>
       <form
-        className="flex flex-col gap-8 overflow-auto bg-white"
+        className="flex h-full flex-col gap-8 overflow-y-auto bg-white"
         onSubmit={form.handleSubmit(onSubmit)}
       >
         <section className="space-y-4">
@@ -83,7 +83,7 @@ export const ProductForm = () => {
 
           <FormField
             control={form.control}
-            name="name"
+            name="description"
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Descripción</FormLabel>
@@ -158,17 +158,6 @@ export const ProductForm = () => {
               </FormItem>
             )}
           />
-        </section>
-
-        <section>
-          <div>
-            <h2 className="text-lg font-semibold">Variantes</h2>
-            <p className="text-muted-foreground text-sm">
-              Configura las variantes del producto.
-            </p>
-          </div>
-
-          <Input />
         </section>
 
         <Button>Guardar</Button>

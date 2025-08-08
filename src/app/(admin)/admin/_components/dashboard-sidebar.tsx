@@ -10,9 +10,13 @@ import {
   SidebarHeader,
 } from "@/components/ui/sidebar";
 import {
+  LucideBookKey,
   LucideChartNoAxesCombined,
   LucideClipboardList,
+  LucideKey,
+  LucideLockKeyholeOpen,
   LucidePackage,
+  LucideUsers,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -26,7 +30,7 @@ export function DashboardSidebar({
         <SidebarMenu>
           <SidebarMenuItem title="Dashboard">
             <SidebarMenuButton className="w-fit" asChild>
-              <div className="flex h-auto">
+              <Link className="flex h-auto" href={"/"}>
                 <Image
                   className="h-auto w-32"
                   src={"/logo-alt.png"}
@@ -35,14 +39,14 @@ export function DashboardSidebar({
                   width={100}
                   height={100}
                 />
-              </div>
+              </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Colecciones</SidebarGroupLabel>
+          <SidebarGroupLabel>Gestión</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               <SidebarMenuItem title="Products">
@@ -72,6 +76,29 @@ export function DashboardSidebar({
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
+        <SidebarGroup>
+          <SidebarGroupLabel>Usuarios</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              <SidebarMenuItem title="Products">
+                <SidebarMenuButton asChild>
+                  <Link href="/admin/products">
+                    <LucideUsers />
+                    <span>Clientes</span>
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+              <SidebarMenuItem title="Products">
+                <SidebarMenuButton asChild>
+                  <Link href="/admin/products">
+                    <LucideKey />
+                    <span>Permisos</span>
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            </SidebarMenu>
+          </SidebarGroupContent>
+          </SidebarGroup>
       </SidebarContent>
     </Sidebar>
   );

@@ -18,7 +18,7 @@ export const NewProductDialog = () => {
           Agregar producto
         </Button>
       </DialogTrigger>
-      <DialogContent>
+      <DialogContent className="h-[80vh] overflow-x-visibe">
         <DialogHeader>
           <DialogTitle>Nuevo Producto</DialogTitle>
         </DialogHeader>
