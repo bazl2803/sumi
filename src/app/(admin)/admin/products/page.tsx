@@ -8,7 +8,6 @@ import {
   LucideArrowUpDown,
   LucideCloudDownload,
   LucideFilter,
-  LucideUpload,
 } from "lucide-react";
 
 const ProductPage = () => (
