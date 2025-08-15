@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/table";
 import { LucideBox, LucideMoreVertical, LucidePlus } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { ProductsTable } from "./components/products-table";
 import { NewProductDialog } from "./components/newproduct-dialog";
 
@@ -29,7 +30,12 @@ const ProductPage = () => (
         />
         <h1 className="text-base font-medium">Productos</h1>
       </div>
-      <NewProductDialog />
+      <Link href="/admin/products/new">
+        <Button>
+          <LucidePlus />
+          Nuevo Producto
+        </Button>
+      </Link>
     </header>
 
     <div className="px-4 lg:gap-2 lg:px-6">

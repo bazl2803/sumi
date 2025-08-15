@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
+import { useFieldArray, useForm } from "react-hook-form";
 import z from "zod";
 import { Textarea } from "@/components/ui/textarea";
 import {
@@ -46,6 +46,10 @@ export const ProductForm = () => {
       gallery: [],
     },
   });
+  const { fields, append, remove } = useFieldArray({
+    control: form.control,
+    name: "variants",
+  });
 
   async function onSubmit(
     values: /*z.infer<typeof CreateProductValidator>*/ any,
@@ -55,9 +59,9 @@ export const ProductForm = () => {
 
   return (
     <Form {...form}>
-      <ScrollArea className="h-[400px]">
+      <ScrollArea>
         <form
-          className="flex flex-col gap-8 bg-white"
+          className="flex flex-col gap-12 bg-white"
           onSubmit={form.handleSubmit(onSubmit)}
         >
           <section className="space-y-4">
@@ -69,35 +73,6 @@ export const ProductForm = () => {
                 Completa los detalles del producto.
               </p>
             </div>
-
-            <FormField
-              control={form.control}
-              name="name"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Nombre</FormLabel>
-                  <FormControl>
-                    <Input placeholder="Nombre del producto" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
-              name="name"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Descripción</FormLabel>
-                  <FormControl>
-                    <Textarea placeholder="shadcn" {...field} />
-                  </FormControl>
-                  <FormDescription>Breve resumén del producto</FormDescription>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
           </section>
 
           <section className="space-y-4">
@@ -148,7 +123,7 @@ export const ProductForm = () => {
                   >
                     <FormControl>
                       <SelectTrigger className="w-full">
-                        <SelectValue placeholder="Selecciona una categoría" />
+                        <SelectValue />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
@@ -161,6 +136,50 @@ export const ProductForm = () => {
                 </FormItem>
               )}
             />
+          </section>
+
+          <section className="space-y-4">
+            <div>
+              <h2 className="text-lg font-semibold">Variantes</h2>
+              <p className="text-muted-foreground text-sm">
+                Añada variaciones del producto.
+              </p>
+
+              <div className="justify-items-top grid grid-cols-2 items-start gap-4">
+                <FormField
+                  control={form.control}
+                  name="name"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Variante</FormLabel>
+                      <FormControl>
+                        <Input {...field} />
+                      </FormControl>
+                      <FormDescription>Nombre de la variante</FormDescription>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
+                  name="name"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Valores</FormLabel>
+                      <FormControl>
+                        <Input {...field} />
+                      </FormControl>
+                      <FormDescription>
+                        Todos los valores que puede tomar la variante (Serados
+                        por comas)
+                      </FormDescription>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
+            </div>
           </section>
 
           <Button>Guardar</Button>
