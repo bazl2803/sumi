@@ -1,6 +1,21 @@
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { SidebarTrigger } from "@/components/ui/sidebar";
+<<<<<<< HEAD:src/app/(admin)/admin/products/page.tsx
+=======
+import { Switch } from "@/components/ui/switch";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import { LucideBox, LucideMoreVertical, LucidePlus } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+>>>>>>> 933cdecc5f9c777f34e372997bbadd58839611f4:src/app/(backoffice)/admin/products/page.tsx
 import { ProductsTable } from "./components/products-table";
 import { NewProductDialog } from "./components/newproduct-dialog";
 import { Button } from "@/components/ui/button";
@@ -21,12 +36,21 @@ const ProductPage = () => (
         />
         <h1 className="text-base font-medium">Productos</h1>
       </div>
+<<<<<<< HEAD:src/app/(admin)/admin/products/page.tsx
       <div className="flex flex-nowrap gap-1">
         <Button variant="outline">
           <LucideCloudDownload /> Exportar
         </Button>
         <NewProductDialog />
       </div>
+=======
+      <Link href="/admin/products/new">
+        <Button>
+          <LucidePlus />
+          Nuevo Producto
+        </Button>
+      </Link>
+>>>>>>> 933cdecc5f9c777f34e372997bbadd58839611f4:src/app/(backoffice)/admin/products/page.tsx
     </header>
 
     <div className="flex flex-col gap-2 px-4 lg:gap-2 lg:px-6">
