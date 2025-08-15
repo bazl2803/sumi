@@ -6,37 +6,9 @@ import Link from "next/link";
 
 export function MainNavbar() {
   return (
-    <nav className="sticky inset-x-0 top-0 z-50 w-full border-b bg-white backdrop-blur-lg transition-all">
+    <nav className="sticky inset-x-0 top-0 z-50 w-screen border-b bg-white backdrop-blur-lg transition-all">
       <div className="mx-auto w-full max-w-screen-xl px-2.5 md:px-20">
         <div className="flex h-16 items-center justify-between">
-          {/* Mobile Menu */}
-          <div className="lg:hidden">
-            <Sheet>
-              <SheetTrigger asChild>
-                <Button variant="ghost" size="icon">
-                  <Menu className="h-6 w-6" />
-                </Button>
-              </SheetTrigger>
-              <SheetContent side="left">
-                {/* Mobile menu content here */}
-                <div className="flex flex-col gap-4 p-4">
-                  <Link href="#" className="text-lg font-semibold">
-                    Home
-                  </Link>
-                  <Link href="#" className="text-lg font-semibold">
-                    Shop
-                  </Link>
-                  <Link href="#" className="text-lg font-semibold">
-                    About
-                  </Link>
-                  <Link href="#" className="text-lg font-semibold">
-                    Contact
-                  </Link>
-                </div>
-              </SheetContent>
-            </Sheet>
-          </div>
-
           {/* Logo */}
           <div className="ml-4 flex lg:ml-0">
             <Link href="/">

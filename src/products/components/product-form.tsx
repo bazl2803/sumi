@@ -23,7 +23,6 @@ import {
 } from "@/components/ui/select";
 import { CreateProductValidator } from "../validators/CreateProductValidator";
 import { CreateProductAction } from "../actions/CreateProductAction";
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 
 const ACCEPTED_IMAGE_TYPES = [
   "image/jpeg",
