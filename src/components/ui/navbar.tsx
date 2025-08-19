@@ -24,9 +24,9 @@ export const Navbar = ({ children, className, defaultValue }: NavbarProps) => {
   return (
     <nav
       role="tablist"
-      className={`w-fit overflow-hidden rounded-full bg-white/70 p-1 outline outline-neutral-200 supports-[backdrop-filter]:backdrop-blur-md ${className}`}
+      className={`w-auto overflow-x-auto rounded-full bg-white/70 p-1 outline outline-neutral-200 supports-[backdrop-filter]:backdrop-blur-md ${className}`}
     >
-      <ul className="flex flex-row gap-1">
+      <ul className="grid-auto-fr grid w-full grid-flow-col grid-rows-1 gap-1 overflow-x-auto">
         <NavbarContext.Provider value={{ selected, setSelected }}>
           {children}
         </NavbarContext.Provider>
@@ -64,7 +64,7 @@ export const NavbarItem = ({
       role="tab"
       aria-selected={value === context.selected ? "true" : "false"}
       className={clsx(
-        "hover-supported:hover:bg-neutral-100/50 flex cursor-pointer flex-col items-center justify-center gap-0.5 rounded-full px-4 py-2 transition-colors duration-150 outline-none",
+        "hover-supported:hover:bg-neutral-100/50 flex h-15 min-w-15 cursor-pointer flex-col items-center justify-center gap-0.5 overflow-hidden rounded-full px-4 py-2 transition-colors duration-150 outline-none",
         value === context.selected && "bg-black/10",
         className,
       )}
@@ -74,7 +74,7 @@ export const NavbarItem = ({
     >
       <Link href={href}>
         <button
-          className="flex flex-col items-center justify-center gap-0.5"
+          className="line-clamp-1 flex flex-col items-center justify-center gap-0.5 overflow-hidden text-ellipsis"
           onClick={() => {
             context.setSelected(value);
           }}

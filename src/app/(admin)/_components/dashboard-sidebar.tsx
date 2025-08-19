@@ -13,10 +13,16 @@ import {
   LucideBookKey,
   LucideChartNoAxesCombined,
   LucideClipboardList,
+<<<<<<< HEAD:src/app/(backoffice)/admin/_components/dashboard-sidebar.tsx
   LucideKey,
   LucideLockKeyholeOpen,
   LucidePackage,
   LucideUsers,
+=======
+  LucideLayoutDashboard,
+  LucidePackage,
+  LucideTag,
+>>>>>>> 4a41c4cdfd8b38c09f5fa98acd87daa476bc5cb6:src/app/(admin)/_components/dashboard-sidebar.tsx
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -28,6 +34,7 @@ export function DashboardSidebar({
     <Sidebar {...props}>
       <SidebarHeader>
         <SidebarMenu>
+<<<<<<< HEAD:src/app/(backoffice)/admin/_components/dashboard-sidebar.tsx
           <SidebarMenuItem title="Dashboard">
             <SidebarMenuButton className="w-fit" asChild>
               <Link className="flex h-auto" href={"/"}>
@@ -40,20 +47,61 @@ export function DashboardSidebar({
                   height={100}
                 />
               </Link>
+=======
+          <SidebarMenuItem>
+            <SidebarMenuButton
+              asChild
+              className="data-[slot=sidebar-menu-button]:!p-1.5"
+            >
+              <a href="#">
+                <Image
+                  src={"/logo-alt.svg"}
+                  alt="logo"
+                  width={100}
+                  height={100}
+                />
+              </a>
+>>>>>>> 4a41c4cdfd8b38c09f5fa98acd87daa476bc5cb6:src/app/(admin)/_components/dashboard-sidebar.tsx
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
+<<<<<<< HEAD:src/app/(backoffice)/admin/_components/dashboard-sidebar.tsx
           <SidebarGroupLabel>Gestión</SidebarGroupLabel>
+=======
+          <SidebarGroupContent>
+            <SidebarMenu>
+              <SidebarMenuItem title="Dashboard">
+                <SidebarMenuButton asChild>
+                  <Link href="/admin">
+                    <LucideLayoutDashboard />
+                    <span>Inicio</span>
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+        <SidebarGroup>
+          <SidebarGroupLabel>Productos</SidebarGroupLabel>
+>>>>>>> 4a41c4cdfd8b38c09f5fa98acd87daa476bc5cb6:src/app/(admin)/_components/dashboard-sidebar.tsx
           <SidebarGroupContent>
             <SidebarMenu>
               <SidebarMenuItem title="Products">
                 <SidebarMenuButton asChild>
                   <Link href="/admin/products">
                     <LucidePackage />
-                    <span>Productos</span>
+                    <span>Catálogo</span>
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+              <SidebarMenuItem title="Categorías">
+                <SidebarMenuButton asChild>
+                  <Link href="/admin/categories">
+                    <LucideTag />
+                    <span>Categorías</span>
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>

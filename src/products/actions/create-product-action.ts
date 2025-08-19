@@ -1,6 +1,6 @@
 "use server";
 import prisma from "@/lib/prisma";
-import { CreateProductValidator } from "../validators/CreateProductValidator";
+import { CreateProductValidator } from "../validators/create-product-validator";
 import { toast } from "sonner";
 
 export async function CreateProductAction(formData: FormData) {

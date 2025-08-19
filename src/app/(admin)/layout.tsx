@@ -1,7 +1,7 @@
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
-import { DashboardSidebar } from "./admin/_components/dashboard-sidebar";
+import { DashboardSidebar } from "./_components/dashboard-sidebar";
 import { Inter } from "next/font/google";
-import '../globals.css'
+import "../globals.css";
 
 const inter = Inter({
   variable: "--font-inter",

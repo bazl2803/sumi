@@ -1,3 +1,4 @@
+<<<<<<< HEAD:src/app/(backoffice)/admin/products/page.tsx
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { SidebarTrigger } from "@/components/ui/sidebar";
@@ -24,6 +25,15 @@ import {
   LucideCloudDownload,
   LucideFilter,
 } from "lucide-react";
+=======
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Separator } from "@/components/ui/separator";
+import { SidebarTrigger } from "@/components/ui/sidebar";
+import { LucidePlus } from "lucide-react";
+import { ProductsTable } from "./components/products-table";
+import Link from "next/link";
+>>>>>>> 4a41c4cdfd8b38c09f5fa98acd87daa476bc5cb6:src/app/(admin)/admin/products/page.tsx
 
 const ProductPage = () => (
   <div className="flex flex-col gap-2">
