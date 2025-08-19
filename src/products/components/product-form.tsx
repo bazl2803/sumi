@@ -21,9 +21,17 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { CreateProductValidator } from "../validators/CreateProductValidator";
-import { CreateProductAction } from "../actions/CreateProductAction";
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+import { CreateProductValidator } from "../validators/create-product-validator";
+import { CreateProductAction } from "../actions/create-product-action";
+import {
+  Dialog,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { CategoryForm } from "@/categories/components/category-form";
 
 const ACCEPTED_IMAGE_TYPES = [
   "image/jpeg",
@@ -59,63 +67,135 @@ export const ProductForm = () => {
 
   return (
     <Form {...form}>
-      <ScrollArea>
-        <form
-          className="flex flex-col gap-12 bg-white"
-          onSubmit={form.handleSubmit(onSubmit)}
-        >
-          <section className="space-y-4">
-            <div>
-              <h2 className="text-lg font-semibold">
-                Información del Producto
-              </h2>
-              <p className="text-muted-foreground text-sm">
-                Completa los detalles del producto.
-              </p>
-            </div>
-          </section>
+      <form
+        className="flex flex-col gap-12 bg-white"
+        onSubmit={form.handleSubmit(onSubmit)}
+      >
+        <section className="space-y-4">
+          <div>
+            <h2 className="text-lg font-semibold">Información del Producto</h2>
+            <p className="text-muted-foreground text-sm">
+              Completa los detalles del producto.
+            </p>
+          </div>
 
-          <section className="space-y-4">
-            <div>
-              <h2 className="text-lg font-semibold">Galería</h2>
-              <p className="text-muted-foreground text-sm">
-                Agrega imágenes del producto.
-              </p>
-            </div>
+          <FormField
+            control={form.control}
+            name="name"
+            render={() => (
+              <FormItem>
+                <FormLabel>Nombre</FormLabel>
+                <FormControl>
+                  <Input />
+                </FormControl>
+                <FormDescription>Nombre del producto</FormDescription>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
 
+          <FormField
+            control={form.control}
+            name="description"
+            render={() => (
+              <FormItem>
+                <FormLabel>Descripción</FormLabel>
+                <FormControl>
+                  <Textarea />
+                </FormControl>
+                <FormDescription>
+                  Breve descripción del producto
+                </FormDescription>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </section>
+
+        <section className="space-y-4">
+          <div>
+            <h2 className="text-lg font-semibold">Inventario</h2>
+            <p className="text-muted-foreground text-sm">
+              Completa la información del inventario del producto.
+            </p>
+          </div>
+          <div className="flex items-center gap-2">
             <FormField
               control={form.control}
-              name="gallery"
-              render={({ field: { onChange, value, ...field } }) => (
+              name="sku"
+              render={() => (
                 <FormItem>
-                  <FormLabel>Imágenes</FormLabel>
+                  <FormLabel>Código</FormLabel>
                   <FormControl>
-                    <Input
-                      accept={ACCEPTED_IMAGE_TYPES.join(",")}
-                      type="file"
-                      multiple
-                      {...field}
-                    />
+                    <Input />
                   </FormControl>
+                  <FormDescription>Código único del producto</FormDescription>
                   <FormMessage />
                 </FormItem>
               )}
             />
-          </section>
 
-          <section className="space-y-4">
-            <div>
-              <h2 className="text-lg font-semibold">Categoría</h2>
-              <p className="text-muted-foreground text-sm">
-                Selecciona la categoría del producto.
-              </p>
-            </div>
+            <FormField
+              control={form.control}
+              name="stock"
+              render={() => (
+                <FormItem>
+                  <FormLabel>Existencia</FormLabel>
+                  <FormControl>
+                    <Input type="number" min={0} />
+                  </FormControl>
+                  <FormDescription>
+                    Cantidad de productos en existencia
+                  </FormDescription>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
+        </section>
 
+        <section className="space-y-4">
+          <div>
+            <h2 className="text-lg font-semibold">Galería</h2>
+            <p className="text-muted-foreground text-sm">
+              Agrega imágenes del producto.
+            </p>
+          </div>
+
+          <FormField
+            control={form.control}
+            name="gallery"
+            render={({ field: { onChange, value, ...field } }) => (
+              <FormItem>
+                <FormLabel>Imágenes</FormLabel>
+                <FormControl>
+                  <Input
+                    accept={ACCEPTED_IMAGE_TYPES.join(",")}
+                    type="file"
+                    multiple
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </section>
+
+        <section className="space-y-4">
+          <div>
+            <h2 className="text-lg font-semibold">Categoría</h2>
+            <p className="text-muted-foreground text-sm">
+              Selecciona la categoría del producto.
+            </p>
+          </div>
+
+          <div className="flex items-end justify-between gap-2">
             <FormField
               control={form.control}
               name="categoryId"
               render={({ field }) => (
-                <FormItem>
+                <FormItem className="grow">
                   <FormLabel>Categoría</FormLabel>
                   <Select
                     onValueChange={field.onChange}
@@ -136,55 +216,67 @@ export const ProductForm = () => {
                 </FormItem>
               )}
             />
-          </section>
 
-          <section className="space-y-4">
-            <div>
-              <h2 className="text-lg font-semibold">Variantes</h2>
-              <p className="text-muted-foreground text-sm">
-                Añada variaciones del producto.
-              </p>
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button variant="secondary">Agregar</Button>
+              </DialogTrigger>
+              <DialogContent>
+                <DialogHeader>
+                  <DialogTitle>Agregar Categoría</DialogTitle>
+                </DialogHeader>
+                <CategoryForm />
+              </DialogContent>
+            </Dialog>
+          </div>
+        </section>
 
-              <div className="justify-items-top grid grid-cols-2 items-start gap-4">
-                <FormField
-                  control={form.control}
-                  name="name"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Variante</FormLabel>
-                      <FormControl>
-                        <Input {...field} />
-                      </FormControl>
-                      <FormDescription>Nombre de la variante</FormDescription>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
+        <section className="space-y-4">
+          <div>
+            <h2 className="text-lg font-semibold">Variantes</h2>
+            <p className="text-muted-foreground text-sm">
+              Añada variaciones del producto.
+            </p>
+          </div>
 
-                <FormField
-                  control={form.control}
-                  name="name"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Valores</FormLabel>
-                      <FormControl>
-                        <Input {...field} />
-                      </FormControl>
-                      <FormDescription>
-                        Todos los valores que puede tomar la variante (Serados
-                        por comas)
-                      </FormDescription>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
-            </div>
-          </section>
+          <div className="justify-items-top grid grid-cols-2 items-start gap-4">
+            <FormField
+              control={form.control}
+              name="name"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Variante</FormLabel>
+                  <FormControl>
+                    <Input {...field} />
+                  </FormControl>
+                  <FormDescription>Nombre de la variante</FormDescription>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
 
-          <Button>Guardar</Button>
-        </form>
-      </ScrollArea>
+            <FormField
+              control={form.control}
+              name="name"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Valores</FormLabel>
+                  <FormControl>
+                    <Input {...field} />
+                  </FormControl>
+                  <FormDescription>
+                    Todos los valores que puede tomar la variante (Serados por
+                    comas)
+                  </FormDescription>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
+        </section>
+
+        <Button>Guardar</Button>
+      </form>
     </Form>
   );
 };

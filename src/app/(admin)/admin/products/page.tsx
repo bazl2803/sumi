@@ -1,23 +1,10 @@
-"use client";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { SidebarTrigger } from "@/components/ui/sidebar";
-import { Switch } from "@/components/ui/switch";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
-import { LucideBox, LucideMoreVertical, LucidePlus } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
+import { LucidePlus } from "lucide-react";
 import { ProductsTable } from "./components/products-table";
-import { NewProductDialog } from "./components/newproduct-dialog";
+import Link from "next/link";
 
 const ProductPage = () => (
   <div className="flex flex-col gap-2">
