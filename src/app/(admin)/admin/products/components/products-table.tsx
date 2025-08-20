@@ -7,7 +7,6 @@ import {
   TableBody,
   TableCell,
 } from "@/components/ui/table";
-import { Switch } from "@radix-ui/react-switch";
 import { LucideBox, LucideMoreVertical } from "lucide-react";
 import Image from "next/image";
 
@@ -17,6 +16,7 @@ export const ProductsTable = () => {
       <TableHeader>
         <TableRow>
           <TableHead className="w-fit">Producto</TableHead>
+          <TableHead className="text-center">Categoría</TableHead>
           <TableHead className="text-center">Marca</TableHead>
           <TableHead className="text-center">Existencia</TableHead>
           <TableHead className="text-center">Precio</TableHead>
@@ -47,6 +47,9 @@ export const ProductsTable = () => {
                 </div>
               </div>
             </div>
+          </TableCell>
+          <TableCell>
+            <div className="text-center font-medium">Iluminación</div>
           </TableCell>
           <TableCell>
             <div className="text-center font-medium">N/A</div>
