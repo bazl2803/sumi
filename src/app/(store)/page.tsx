@@ -18,13 +18,13 @@ export default function Home() {
       </header>
 
       <div className="p-4 sm:p-8">
-        <h3 className="mb-4 text-2xl text-xl font-semibold">Categorías</h3>
-        <h3 className="mb-4 text-2xl text-xl font-semibold">
+        <h3 className="mb-4 text-xl font-semibold">Categorías</h3>
+        <h3 className="mb-4 text-xl font-semibold">
           Lo más Destacado
         </h3>
-        <h3 className="mb-4 text-2xl text-xl font-semibold">Más Cotizados</h3>
-        <h3 className="mb-4 text-2xl text-xl font-semibold">Nuestras Marcas</h3>
-        <h3 className="mb-4 text-2xl text-xl font-semibold">Recien Llegados</h3>
+        <h3 className="mb-4 text-xl font-semibold">Más Cotizados</h3>
+        <h3 className="mb-4 text-xl font-semibold">Nuestras Marcas</h3>
+        <h3 className="mb-4 text-xl font-semibold">Recien Llegados</h3>
       </div>
     </main>
   );

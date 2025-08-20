@@ -22,11 +22,8 @@
     "@vercel/blob": "^1.1.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-<<<<<<< HEAD
     "embla-carousel-react": "^8.6.0",
-=======
     "cmdk": "^1.1.1",
->>>>>>> 4a41c4cdfd8b38c09f5fa98acd87daa476bc5cb6
     "lucide-react": "^0.525.0",
     "next": "15.3.4",
     "next-themes": "^0.4.6",
