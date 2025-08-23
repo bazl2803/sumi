@@ -21,22 +21,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-<<<<<<< HEAD
-import { CreateProductValidator } from "../validators/CreateProductValidator";
-import { CreateProductAction } from "../actions/CreateProductAction";
-=======
+
 import { CreateProductValidator } from "../validators/create-product-validator";
 import { CreateProductAction } from "../actions/create-product-action";
-import {
-  Dialog,
-  DialogContent,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import { CategoryForm } from "@/categories/components/category-form";
->>>>>>> 4a41c4cdfd8b38c09f5fa98acd87daa476bc5cb6
 
 const ACCEPTED_IMAGE_TYPES = [
   "image/jpeg",
@@ -72,14 +59,8 @@ export const ProductForm = () => {
 
   return (
     <Form {...form}>
-<<<<<<< HEAD
-<<<<<<< HEAD
-      <form
-        className="flex h-full flex-col gap-8 overflow-y-auto bg-white"
-=======
       <form
         className="flex flex-col gap-12 bg-white"
->>>>>>> 4a41c4cdfd8b38c09f5fa98acd87daa476bc5cb6
         onSubmit={form.handleSubmit(onSubmit)}
       >
         <section className="space-y-4">
@@ -89,7 +70,6 @@ export const ProductForm = () => {
               Completa los detalles del producto.
             </p>
           </div>
-<<<<<<< HEAD
 
           <FormField
             control={form.control}
@@ -115,123 +95,6 @@ export const ProductForm = () => {
                   <Textarea placeholder="shadcn" {...field} />
                 </FormControl>
                 <FormDescription>Breve resumén del producto</FormDescription>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-        </section>
-
-        <section className="space-y-4">
-          <div>
-            <h2 className="text-lg font-semibold">Galería</h2>
-            <p className="text-muted-foreground text-sm">
-              Agrega imágenes del producto.
-            </p>
-          </div>
-
-          <FormField
-            control={form.control}
-            name="gallery"
-            render={({ field: { onChange, value, ...field } }) => (
-              <FormItem>
-                <FormLabel>Imágenes</FormLabel>
-                <FormControl>
-                  <Input
-                    accept={ACCEPTED_IMAGE_TYPES.join(",")}
-                    type="file"
-                    multiple
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-        </section>
-
-        <section className="space-y-4">
-          <div>
-            <h2 className="text-lg font-semibold">Categoría</h2>
-            <p className="text-muted-foreground text-sm">
-              Selecciona la categoría del producto.
-            </p>
-          </div>
-
-          <FormField
-            control={form.control}
-            name="categoryId"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Categoría</FormLabel>
-                <Select
-                  onValueChange={field.onChange}
-                  defaultValue={field.value}
-                >
-                  <FormControl>
-                    <SelectTrigger className="w-full">
-                      <SelectValue placeholder="Selecciona una categoría" />
-                    </SelectTrigger>
-                  </FormControl>
-                  <SelectContent>
-                    <SelectItem value="electronics">Electrónica</SelectItem>
-                    <SelectItem value="clothing">Ropa</SelectItem>
-                    <SelectItem value="accessories">Accesorios</SelectItem>
-                  </SelectContent>
-                </Select>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-        </section>
-
-        <Button>Guardar</Button>
-      </form>
-=======
-      <ScrollArea>
-        <form
-          className="flex flex-col gap-12 bg-white"
-          onSubmit={form.handleSubmit(onSubmit)}
-        >
-          <section className="space-y-4">
-            <div>
-              <h2 className="text-lg font-semibold">
-                Información del Producto
-              </h2>
-              <p className="text-muted-foreground text-sm">
-                Completa los detalles del producto.
-              </p>
-            </div>
-          </section>
-=======
->>>>>>> 4a41c4cdfd8b38c09f5fa98acd87daa476bc5cb6
-
-          <FormField
-            control={form.control}
-            name="name"
-            render={() => (
-              <FormItem>
-                <FormLabel>Nombre</FormLabel>
-                <FormControl>
-                  <Input />
-                </FormControl>
-                <FormDescription>Nombre del producto</FormDescription>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          <FormField
-            control={form.control}
-            name="description"
-            render={() => (
-              <FormItem>
-                <FormLabel>Descripción</FormLabel>
-                <FormControl>
-                  <Textarea />
-                </FormControl>
-                <FormDescription>
-                  Breve descripción del producto
-                </FormDescription>
                 <FormMessage />
               </FormItem>
             )}
@@ -316,45 +179,31 @@ export const ProductForm = () => {
             </p>
           </div>
 
-          <div className="flex items-end justify-between gap-2">
-            <FormField
-              control={form.control}
-              name="categoryId"
-              render={({ field }) => (
-                <FormItem className="grow">
-                  <FormLabel>Categoría</FormLabel>
-                  <Select
-                    onValueChange={field.onChange}
-                    defaultValue={field.value}
-                  >
-                    <FormControl>
-                      <SelectTrigger className="w-full">
-                        <SelectValue />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      <SelectItem value="electronics">Electrónica</SelectItem>
-                      <SelectItem value="clothing">Ropa</SelectItem>
-                      <SelectItem value="accessories">Accesorios</SelectItem>
-                    </SelectContent>
-                  </Select>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <Dialog>
-              <DialogTrigger asChild>
-                <Button variant="secondary">Agregar</Button>
-              </DialogTrigger>
-              <DialogContent>
-                <DialogHeader>
-                  <DialogTitle>Agregar Categoría</DialogTitle>
-                </DialogHeader>
-                <CategoryForm />
-              </DialogContent>
-            </Dialog>
-          </div>
+          <FormField
+            control={form.control}
+            name="categoryId"
+            render={({ field }) => (
+              <FormItem className="grow">
+                <FormLabel>Categoría</FormLabel>
+                <Select
+                  onValueChange={field.onChange}
+                  defaultValue={field.value}
+                >
+                  <FormControl>
+                    <SelectTrigger className="w-full">
+                      <SelectValue />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent>
+                    <SelectItem value="electronics">Electrónica</SelectItem>
+                    <SelectItem value="clothing">Ropa</SelectItem>
+                    <SelectItem value="accessories">Accesorios</SelectItem>
+                  </SelectContent>
+                </Select>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
         </section>
 
         <section className="space-y-4">
@@ -381,12 +230,6 @@ export const ProductForm = () => {
               )}
             />
 
-<<<<<<< HEAD
-          <Button>Guardar</Button>
-        </form>
-      </ScrollArea>
->>>>>>> 933cdecc5f9c777f34e372997bbadd58839611f4
-=======
             <FormField
               control={form.control}
               name="name"
@@ -409,7 +252,6 @@ export const ProductForm = () => {
 
         <Button>Guardar</Button>
       </form>
->>>>>>> 4a41c4cdfd8b38c09f5fa98acd87daa476bc5cb6
     </Form>
   );
 };

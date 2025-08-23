@@ -1,8 +1,16 @@
+import { CategoriesTable } from "@/categories/components/categories-table";
+import { CategoryForm } from "@/categories/components/category-form";
 import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
+import { Separator } from "@/components/ui/separator";
 import { SidebarTrigger } from "@/components/ui/sidebar";
-import { Table, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { Separator } from "@radix-ui/react-separator";
 import { LucideFilter, LucideArrowUpDown, LucidePlus } from "lucide-react";
 import { Metadata } from "next";
 
@@ -24,14 +32,24 @@ export default function AdminCategoriesPage() {
           <h1 className="text-base font-medium">Categorías</h1>
         </div>
 
-        <Button>
-          <LucidePlus />
-          Nueva Categoría
-        </Button>
+        <Dialog>
+          <DialogTrigger asChild>
+            <Button>
+              <LucidePlus />
+              Nueva Categoría
+            </Button>
+          </DialogTrigger>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>Nueva Categoría</DialogTitle>
+            </DialogHeader>
+            <CategoryForm />
+          </DialogContent>
+        </Dialog>
       </header>
 
       <div className="flex flex-col gap-2 px-4 lg:gap-2 lg:px-6">
-        <div className="flex w-full items-center gap-2">
+        <div className="flex w-full items-center justify-between gap-2">
           <form className="w-80">
             <Input
               placeholder="Buscar categorías"
@@ -39,23 +57,17 @@ export default function AdminCategoriesPage() {
               type="search"
             />
           </form>
-          <Separator orientation="vertical" className="h-8" />
-          <Button variant={"outline"}>
-            <LucideFilter /> Filtrar
-          </Button>
-          <Button variant={"outline"}>
-            <LucideArrowUpDown /> Ordenar
-          </Button>
+          <div className="flex flex-row items-center gap-2">
+            <Button variant={"outline"}>
+              <LucideFilter /> Filtrar
+            </Button>
+            <Button variant={"outline"}>
+              <LucideArrowUpDown /> Ordenar
+            </Button>
+          </div>
         </div>
 
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead>Categoría</TableHead>
-              <TableHead>Acciones</TableHead>
-            </TableRow>
-          </TableHeader>
-        </Table>
+        <CategoriesTable />
       </div>
     </main>
   );

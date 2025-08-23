@@ -5,6 +5,11 @@
   font-family: Inter;
 }
 
+@theme {
+  --breakpoint-xs: 16rem;
+  --breakpoint-sm: 30rem;
+}
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {

@@ -1,3 +1,4 @@
+"use client";
 import {
   Form,
   FormControl,
@@ -23,9 +24,13 @@ export const CategoryForm: React.FC = () => {
     },
   });
 
+  const onSubmit = (data: z.infer<typeof CreateCategoryValidator>) => {
+    console.log(data);
+  };
+
   return (
     <Form {...form}>
-      <form className="space-y-4">
+      <form className="space-y-4" onSubmit={form.handleSubmit(onSubmit)}>
         <FormField
           control={form.control}
           name="thumbnail"
