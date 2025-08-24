@@ -14,13 +14,14 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import z from "zod";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { ImageUpload } from "@/components/ui/image-upload";
 
 export const CategoryForm: React.FC = () => {
   const form = useForm<z.infer<typeof CreateCategoryValidator>>({
     resolver: zodResolver(CreateCategoryValidator),
     defaultValues: {
       name: "",
-      thumbnail: undefined,
+      thumbnail: [], // Assuming thumbnail is an array of files
     },
   });
 
@@ -34,11 +35,15 @@ export const CategoryForm: React.FC = () => {
         <FormField
           control={form.control}
           name="thumbnail"
-          render={() => (
+          render={({ field }) => (
             <FormItem>
               <FormLabel>Miniatura</FormLabel>
               <FormControl>
-                <Input type="file" />
+                <ImageUpload
+                  value={field.value || []}
+                  onChange={field.onChange}
+                  maxFiles={1}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
