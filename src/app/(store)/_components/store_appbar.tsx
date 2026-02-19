@@ -2,13 +2,14 @@
 
 import clsx from 'clsx'
 import { sva } from 'panda/css'
-import { Button, CommandBoxInput, Group, InputAddon, Logo } from '@/components'
+import { Button, ButtonIcon, CommandBoxInput, Group, InputAddon, Logo } from '@/components'
 import { CommandBox } from '@/components/molecules/command-box/command-box'
 import { CommandBoxContent } from '@/components/molecules/command-box/components/command-box-content'
-import { IconSearch } from '@tabler/icons-react'
+import { IconSearch, IconShoppingCart } from '@tabler/icons-react'
+import Link from 'next/link'
 
 const styles = sva({
-	slots: ['root', 'commandBox'],
+	slots: ['root', 'commandBox', 'shoppingCartButton'],
 	base: {
 		root: {
 			display: 'flex',
@@ -22,18 +23,27 @@ const styles = sva({
 			paddingY: 4,
 			paddingX: 8,
 			gap: '4',
-			borderBottom: '1px solid',
-			borderBlockColor: { base: 'gray.400', _osDark: 'gray.700' },
 			backgroundColor: {
-				base: 'gray.50',
-				_osDark: 'gray.950',
+				base: 'white',
+				_osDark: 'black',
+			},
+			borderBottom: '1px solid',
+			borderColor: {
+				base: 'neutral.100',
+				_osDark: 'neutral.900',
 			},
 		},
 		commandBox: {
 			display: 'none',
-			xl: {
+			lg: {
 				display: 'block',
-				width: '1/3',
+				width: 'md',
+			},
+		},
+		shoppingCartButton: {
+			display: 'none',
+			lg: {
+				display: 'block',
 			},
 		},
 	},
@@ -59,7 +69,22 @@ export const StoreAppbar = ({ className }: { className?: string }) => {
 				<CommandBoxContent />
 			</CommandBox>
 			<Group>
-				<Button variant="solid">Iniciar Sesión</Button>
+				<Button
+					className={classes.shoppingCartButton}
+					variant="subtle"
+					rounded="full"
+					size="icon"
+				>
+					<ButtonIcon icon={IconShoppingCart} />
+				</Button>
+				<Link href="/register">
+					<Button
+						variant="solid"
+						rounded="full"
+					>
+						Registrarse
+					</Button>
+				</Link>
 			</Group>
 		</div>
 	)

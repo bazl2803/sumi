@@ -1,4 +1,3 @@
-import { truncate } from "fs";
 import { cva } from "panda/css";
 
 export const TypographyRecipe = cva({
@@ -7,7 +6,7 @@ export const TypographyRecipe = cva({
     fontSmoothing: "antialiased",
   },
   variants: {
-    role: {
+    variant: {
       "large-title": {
         fontSize: "26pt",
         lineHeight: "32pt",
@@ -77,12 +76,12 @@ export const TypographyRecipe = cva({
   },
   compoundVariants: [
     {
-      role: ["large-title", "title1", "title2"],
+      variant: ["large-title", "title1", "title2"],
       emphasized: true,
       css: { fontWeight: "700" },
     },
     {
-      role: [
+      variant: [
         "title3",
         "body",
         "callout",
@@ -94,17 +93,17 @@ export const TypographyRecipe = cva({
       css: { fontWeight: "600" },
     },
     {
-      role: "headline",
+      variant: "headline",
       emphasized: true,
       css: { fontWeight: "900" },
     },
     {
-      role: "caption1",
+      variant: "caption1",
       emphasized: true,
       css: { fontWeight: "500" },
     },
   ],
   defaultVariants: {
-    role: "large-title",
+    variant: "large-title",
   },
 });

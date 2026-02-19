@@ -15,20 +15,20 @@ export const ButtonRecipe = cva({
 				backgroundColor: { base: 'black', _osDark: 'white' },
 				color: { base: 'white', _osDark: 'black' },
 				_hover: {
-					backgroundColor: { base: 'gray.800', _osDark: 'gray.100' },
+					backgroundColor: { base: 'neutral.800', _osDark: 'neutral.100' },
 				},
 			},
 			outline: {
 				outlineWidth: 1,
 				outlineStyle: 'solid',
-				outlineColor: { base: 'gray.200', _osDark: 'gray.700' },
+				outlineColor: { base: 'neutral.200', _osDark: 'neutral.800' },
 				_hover: {
-					backgroundColor: { base: 'gray.100', _osDark: 'gray.800' },
+					backgroundColor: { base: 'neutral.200', _osDark: 'neutral.700' },
 				},
 			},
 			ghost: {
 				_hover: {
-					backgroundColor: { base: 'gray.100', _osDark: 'gray.800' },
+					backgroundColor: { base: 'neutral.100', _osDark: 'neutral.800' },
 				},
 			},
 			link: {
@@ -41,16 +41,16 @@ export const ButtonRecipe = cva({
 			subtle: {
 				outlineWidth: 1,
 				outlineStyle: 'solid',
-				outlineColor: { base: 'gray.200', _osDark: 'gray.700' },
-				backgroundColor: { base: 'gray.100', _osDark: 'gray.900' },
+				outlineColor: { base: 'neutral.200', _osDark: 'neutral.700' },
+				backgroundColor: { base: 'neutral.100', _osDark: 'neutral.900' },
 				_hover: {
-					backgroundColor: { base: 'gray.200', _osDark: 'gray.800' },
+					backgroundColor: { base: 'neutral.200', _osDark: 'neutral.950' },
 				},
 			},
 			soft: {
-				backgroundColor: { base: 'gray.100', _osDark: 'gray.800' },
+				backgroundColor: { base: 'neutral.100', _osDark: 'neutral.800' },
 				_hover: {
-					backgroundColor: { base: 'gray.200', _osDark: 'gray.700' },
+					backgroundColor: { base: 'neutral.200', _osDark: 'neutral.700' },
 				},
 			},
 		},

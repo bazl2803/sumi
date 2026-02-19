@@ -11,6 +11,7 @@ export default function StoreLayout({ children }: { children: React.ReactNode })
 		<div
 			className={css({
 				height: 'full',
+				spaceY: 4,
 			})}
 		>
 			<StoreAppbar />
@@ -18,6 +19,7 @@ export default function StoreLayout({ children }: { children: React.ReactNode })
 				className={css({
 					maxWidth: '7xl',
 					marginInline: 'auto',
+					paddingInline: 8,
 				})}
 			>
 				{children}

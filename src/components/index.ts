@@ -41,7 +41,6 @@ export * from './molecules/dropdown/components/dropdown-trigger';
 export * from './molecules/dropdown/dropdown-context';
 export * from './molecules/dropdown/dropdown.recipes';
 export * from './molecules/dropdown/dropdown';
-export * from './molecules/field/field.recipes';
 export * from './molecules/field/field';
 export * from './molecules/navbar/components/navbar-item';
 export * from './molecules/navbar/navbar.recipes';

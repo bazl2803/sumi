@@ -7,7 +7,8 @@ import { css } from 'panda/css'
 const styles = css({
 	bottom: '4',
 	position: 'sticky',
-	xl: { display: 'none' },
+	paddingX: 4,
+	lg: { display: 'none' },
 })
 
 export const StoreNavbar = () => {

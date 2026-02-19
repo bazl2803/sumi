@@ -2,6 +2,7 @@ import { css, cva, sva } from "panda/css";
 
 export const CarouselRecipe = sva({
     slots: ['root', 'rail'],
+    className: 'carousel',
     base: {
         root: {
         },
@@ -14,6 +15,7 @@ export const CarouselRecipe = sva({
             scrollSnapStop: "always",
             overflowX: "scroll",
             scrollBehavior: "smooth",
+            gap: 4,
             _scrollbar: {
                 display: "none",
             },

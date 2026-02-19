@@ -1,34 +1,21 @@
-import { FieldRecipe, Textbox } from '@/components'
-import { Hint } from '@/components/atoms/hint/hint'
-import clsx from 'clsx'
+import React from 'react'
 import { css } from 'panda/css'
+import { FieldLabel } from './components/field-label'
+import { FieldDescription } from './components/field-description'
 
-interface FieldProps extends React.ComponentPropsWithRef<'div'> {
-	hint?: string
-	label?: string
-	error?: string
-	children: React.ReactElement<typeof Textbox>
+// Props
+interface FieldProps extends React.ComponentProps<'div'> {}
+
+// Styles
+const FieldStyles = css({
+	display: 'flex',
+	flexDirection: 'column',
+	gap: '0.5rem',
+})
+
+export const Field = ({ children }: FieldProps) => {
+	return <div className={FieldStyles}>{children}</div>
 }
 
-export const Field: React.FC<FieldProps> = ({
-	hint,
-	label,
-	error,
-	children,
-	className,
-	...props
-}) => {
-	const styles = FieldRecipe()
-
-	return (
-		<div
-			className={clsx(styles.root, className)}
-			{...props}
-		>
-			{label && <label className={styles.label}>{label}</label>}
-			{children}
-			{hint && !error && <Hint>{hint}</Hint>}
-			{error && <Hint error>{error}</Hint>}
-		</div>
-	)
-}
+Field.Label = FieldLabel
+Field.Description = FieldDescription

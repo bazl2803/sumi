@@ -1,9 +1,8 @@
-import { css } from "panda/css";
+import { SystemStyleObject } from "panda/types";
 
-export const StackRecipe = css({
+export const StackRecipe: SystemStyleObject = {
   display: "flex",
   flexDirection: "column",
-  justifyContent: "start",
   alignItems: "start",
   rowGap: 1,
-});
+};

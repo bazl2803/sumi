@@ -16,8 +16,8 @@ const styles = css({
 	maxWidth: 'screen',
 	maxHeight: 'screen',
 	backgroundColor: {
-		base: 'gray.50',
-		_osDark: 'gray.950',
+		base: 'white',
+		_osDark: 'black',
 	},
 })
 

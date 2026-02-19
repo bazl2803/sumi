@@ -5,7 +5,10 @@ const nextConfig: NextConfig = {
   reactCompiler: true,
   experimental: {
     optimizePackageImports: ['@/components'],
-  }
+  },
+  images: {
+    remotePatterns: [new URL('https://juixhd2gcyyv123g.public.blob.vercel-storage.com/**')],
+  },
 };
 
 export default nextConfig;

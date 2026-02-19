@@ -7,8 +7,8 @@ export const NavbarRecipe = css({
     padding: 2,
     borderRadius: 'full',
     outline: '1px solid',
-    outlineColor: { base: 'gray.200/70', _osDark: 'gray.800/70' },
-    backgroundColor: { base: 'gray.50/70', _osDark: 'gray.950/70' },
+    outlineColor: { base: 'neutral.200/70', _osDark: 'neutral.800/70' },
+    backgroundColor: { base: 'neutral.50/70', _osDark: 'neutral.950/70' },
     backdropFilter: 'auto',
     backdropBlur: 'sm'
 })
@@ -24,12 +24,12 @@ export const NavbarItemRecipe = sva({
             rowGap: 1,
             padding: 1,
             borderRadius: '4xl',
-            color: { base: 'gray.600', _osDark: 'gray.400' },
+            color: { base: 'neutral.600', _osDark: 'neutral.400' },
         },
         label: {
             fontSize: 'xs',
             fontWeight: '500',
-            color: { base: 'gray.500', _osDark: 'gray.400' },
+            color: { base: 'neutral.500', _osDark: 'neutral.400' },
             textOverflow: 'ellipsis',
             whiteSpace: 'nowrap',
             overflow: 'hidden',
@@ -40,7 +40,7 @@ export const NavbarItemRecipe = sva({
         selected: {
             true: {
                 root: {
-                    bg: { base: 'gray.100', _osDark: 'gray.900' },
+                    bg: { base: 'neutral.100', _osDark: 'neutral.900' },
                     color: { base: 'black', _osDark: 'white' },
                 }
             },

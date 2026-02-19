@@ -1,5 +1,6 @@
-import { Slideshow } from '@/components'
+import { Slideshow, Typography } from '@/components'
 import { css } from 'panda/css'
+import { LandingCategories } from './_components/page/landing-categories'
 
 export default function HomePage() {
 	return (
@@ -7,10 +8,17 @@ export default function HomePage() {
 			className={css({
 				display: 'flex',
 				flexDirection: 'column',
-				gap: 4,
+				gap: 8,
 			})}
 		>
-			<Slideshow images={['/slide1.png']} />
+			<Slideshow images={['/slide2.png']} />
+			<LandingCategories />
+			<Typography
+				variant="title2"
+				emphasized
+			>
+				✨Destacados
+			</Typography>
 		</div>
 	)
 }

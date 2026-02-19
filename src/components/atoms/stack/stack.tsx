@@ -1,8 +1,16 @@
-import clsx from "clsx";
-import { StackRecipe } from "./stack.recipes";
+import { css, cx } from 'panda/css'
+import { SystemStyleObject } from 'panda/types'
+import { StackRecipe } from './stack.recipes'
 
-interface StackProps extends React.ComponentPropsWithRef<"div"> {}
+interface StackProps extends React.ComponentPropsWithRef<'div'> {
+	css?: SystemStyleObject
+}
 
-export const Stack: React.FC<StackProps> = ({ className, ...props }) => {
-  return <div className={clsx(StackRecipe, className)} {...props} />;
-};
+export const Stack: React.FC<StackProps> = ({ className, css: cssProp, ...props }) => {
+	return (
+		<div
+			className={cx(css(StackRecipe, cssProp), className)}
+			{...props}
+		/>
+	)
+}
