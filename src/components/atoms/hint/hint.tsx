@@ -13,7 +13,7 @@ export const Hint = ({ className, hidden, error, ...props }: HintProps) => (
 	<small
 		{...props}
 		className={clsx(
-			TypographyRecipe({ role: 'footnote' }),
+			TypographyRecipe({ variant: 'footnote' }),
 			HintRecipe({ hidden, error }),
 			className
 		)}

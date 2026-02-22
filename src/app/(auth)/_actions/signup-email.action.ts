@@ -1,4 +1,7 @@
+import { convertZodErrors } from "@/utils";
 import z from "zod";
+
+// --- Schemas -----------------------------------------------------
 
 export const signUpSchema = z
     .object({
@@ -31,4 +34,38 @@ export const signUpSchema = z
         path: ["confirmPassword"],
     });
 
-export type SignUpSchemaFormData = z.infer<typeof signUpSchema>;
+// --- Types -------------------------------------------------------
+
+export type SignUpInput = z.infer<typeof signUpSchema>;
+
+export type SignUpState = {
+    success?: boolean;
+    message?: string;
+    errors?: Record<string, string>;
+    data?: SignUpInput | null;
+};
+
+// --- Action -----------------------------------------------------
+export async function signUpEmailAction(
+    prevState: SignUpState,
+    formData: FormData
+): Promise<SignUpState> {
+    const input = Object.fromEntries(formData.entries()) as SignUpInput;
+    const validation = signUpSchema.safeParse(input);
+
+    if (!validation.success) {
+        return {
+            success: false,
+            message: "Please correct the errors and try again.",
+            errors: convertZodErrors(validation.error),
+        }
+    }
+
+    try {
+
+    } catch (error) {
+
+    }
+
+    return { success: false }
+}

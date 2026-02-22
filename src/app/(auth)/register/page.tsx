@@ -1,19 +1,27 @@
 'use client'
 
-import { Button, Field, Input, Logo, Separator, Typography } from '@/components'
+import { Button, Field, Hint, Input, Logo, Separator, Typography } from '@/components'
 import { SocialLogin } from '../_components/social-login'
-import { signUpEmailAction } from '../_actions/signUpWithEmail'
-import { useActionState } from 'react'
 import { css, sva } from 'panda/css'
+import React from 'react'
+import { signUpEmailAction, SignUpState } from '../_actions/signup-email.action'
 
+// --- Styles -----------------------------------------------------------------
 const RegisterPageStyles = sva({
-	slots: ['root', 'form'],
+	slots: ['root', 'header', 'form'],
 	base: {
 		root: {
 			display: 'flex',
 			flexDirection: 'column',
 			padding: 6,
 			rowGap: 4,
+		},
+		header: {
+			display: 'flex',
+			flexDirection: 'column',
+			rowGap: 6,
+			paddingY: 4,
+			alignItems: 'center',
 		},
 		form: {
 			display: 'flex',
@@ -23,28 +31,30 @@ const RegisterPageStyles = sva({
 	},
 })
 
-const INITIAL_STATE = {
+// --- Types ------------------------------------------------------------------
+const initialState: SignUpState = {
 	success: false,
 	message: '',
+	errors: undefined,
+	data: null,
 }
 
+// --- Component --------------------------------------------------------------
 export default function RegisterPage() {
-	const [state, action, isPending] = useActionState(
-		signUpEmailAction,
-		INITIAL_STATE,
-	)
-
+	const [state, action] = React.useActionState(signUpEmailAction, initialState)
 	const styles = RegisterPageStyles()
 
 	return (
 		<div className={styles.root}>
-			<Logo />
-			<Typography
-				variant="title2"
-				emphasized
-			>
-				Crear cuenta
-			</Typography>
+			<header className={styles.header}>
+				<Logo />
+				<Typography
+					variant="title1"
+					emphasized
+				>
+					Crear Cuenta
+				</Typography>
+			</header>
 
 			<form
 				className={styles.form}
@@ -55,6 +65,7 @@ export default function RegisterPage() {
 						name="name"
 						placeholder="Nombre"
 					/>
+					{state.errors?.name && <Hint error>{state.errors?.name}</Hint>}
 				</Field>
 
 				<Field>
@@ -63,6 +74,7 @@ export default function RegisterPage() {
 						placeholder="Email"
 						type="email"
 					/>
+					{state.errors?.email && <Hint error>{state.errors?.email}</Hint>}
 				</Field>
 
 				<Field>
@@ -71,6 +83,7 @@ export default function RegisterPage() {
 						placeholder="Contraseña"
 						type="password"
 					/>
+					{state.errors?.password && <Hint error>{state.errors?.password}</Hint>}
 				</Field>
 
 				<Field>
@@ -79,14 +92,14 @@ export default function RegisterPage() {
 						placeholder="Confirmar contraseña"
 						type="password"
 					/>
+					{state.errors?.confirmPassword && <Hint error>{state.errors?.confirmPassword}</Hint>}
 				</Field>
 
 				<Button
 					type="submit"
 					rounded="full"
-					disabled={isPending}
 				>
-					{isPending ? 'Registrando...' : 'Registrarse'}
+					Registrarse
 				</Button>
 			</form>
 
