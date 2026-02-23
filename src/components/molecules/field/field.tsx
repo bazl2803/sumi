@@ -1,10 +1,13 @@
 import React from 'react'
-import { css } from 'panda/css'
-import { FieldLabel } from './components/field-label'
-import { FieldDescription } from './components/field-description'
+import { css, cx } from 'panda/css'
+import { Hint } from '@/components/atoms/hint/hint'
 
 // Props
-interface FieldProps extends React.ComponentProps<'div'> {}
+interface FieldProps extends React.ComponentProps<'div'> {
+	label?: string
+	description?: string
+	errors?: string[]
+}
 
 // Styles
 const FieldStyles = css({
@@ -13,9 +16,36 @@ const FieldStyles = css({
 	gap: '0.5rem',
 })
 
-export const Field = ({ children }: FieldProps) => {
-	return <div className={FieldStyles}>{children}</div>
-}
+const FieldLabelStyles = css({
+	fontSize: 'sm',
+	fontWeight: 'medium',
+})
 
-Field.Label = FieldLabel
-Field.Description = FieldDescription
+export const Field = ({
+	className,
+	children,
+	label,
+	description,
+	errors,
+	...props
+}: FieldProps) => {
+	return (
+		<div
+			className={cx(FieldStyles, className)}
+			{...props}
+		>
+			{label && <label className={FieldLabelStyles}>{label}</label>}
+			{children}
+			{(description || !errors?.length) && <Hint>{description}</Hint>}
+			{errors &&
+				errors.map((error, i) => (
+					<Hint
+						key={i}
+						error
+					>
+						{error}
+					</Hint>
+				))}
+		</div>
+	)
+}
