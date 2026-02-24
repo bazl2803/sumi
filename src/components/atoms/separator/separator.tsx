@@ -17,12 +17,16 @@ export const Separator: React.FC<SeparatorProps> = ({ children, className = '' }
 					gap: 2,
 					w: 'full',
 				}),
-				className
+				className,
 			)}
 		>
-			<hr className={css({ flex: 1 })} />
+			<hr
+				className={css({ flex: 1, borderColor: { base: 'neutral.300', _osDark: 'neutral.600' } })}
+			/>
 			{children}
-			<hr className={css({ flex: 1 })} />
+			<hr
+				className={css({ flex: 1, borderColor: { base: 'neutral.300', _osDark: 'neutral.600' } })}
+			/>
 		</div>
 	)
 }

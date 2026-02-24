@@ -1,4 +1,8 @@
+'use server'
+import 'server-only';
+import { auth } from './../../../lib/auth/index';
 import { convertZodErrors } from "@/utils";
+import { headers } from 'next/headers';
 import z from "zod";
 
 // --- Schemas -----------------------------------------------------
@@ -47,7 +51,7 @@ export type SignUpState = {
 
 // --- Action -----------------------------------------------------
 export async function signUpEmailAction(
-    prevState: SignUpState,
+    _prevState: SignUpState,
     formData: FormData
 ): Promise<SignUpState> {
     const input = Object.fromEntries(formData.entries()) as SignUpInput;
@@ -62,9 +66,23 @@ export async function signUpEmailAction(
     }
 
     try {
+        await auth.api.signUpEmail({
+            body: {
+                name: input.name,
+                email: input.email,
+                password: input.password,
+            },
+            headers: await headers()
+        })
 
+        return { success: true }
     } catch (error) {
-
+        if (error instanceof Error) {
+            return {
+                success: false,
+                message: error.message,
+            }
+        }
     }
 
     return { success: false }

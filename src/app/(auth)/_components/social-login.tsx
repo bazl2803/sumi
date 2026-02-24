@@ -2,6 +2,7 @@ import { Button, ButtonIcon } from '@/components'
 import { signInSocial } from '../_actions/signInSocial'
 import { css } from 'panda/css'
 import Image from 'next/image'
+import { IconBrandAppleFilled } from '@tabler/icons-react'
 
 const styles = css({
 	display: 'flex',
@@ -28,6 +29,27 @@ export const SocialLogin = () => {
 					height={20}
 				/>
 				Continuar con Google
+			</Button>
+
+			<Button
+				variant="outline"
+				type="submit"
+			>
+				<Image
+					src="/icons8-microsoft.svg"
+					alt="Google"
+					width={20}
+					height={20}
+				/>
+				Continuar con Microsoft
+			</Button>
+
+			<Button
+				variant="outline"
+				type="submit"
+			>
+				<ButtonIcon icon={IconBrandAppleFilled} />
+				Continuar con Apple
 			</Button>
 		</form>
 	)

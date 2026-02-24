@@ -13,20 +13,26 @@ const RegisterPageStyles = sva({
 		root: {
 			display: 'flex',
 			flexDirection: 'column',
-			padding: 6,
 			rowGap: 4,
+			maxWidth: '480px',
+			width: 'full',
+			margin: 'auto',
 		},
 		header: {
 			display: 'flex',
 			flexDirection: 'column',
 			rowGap: 6,
 			paddingY: 4,
-			alignItems: 'center',
+			alignItems: 'start',
 		},
 		form: {
 			display: 'flex',
 			flexDirection: 'column',
-			rowGap: 6,
+			rowGap: 4,
+			scrollbarWidth: 'none',
+			'&::-webkit-scrollbar': {
+				display: 'none',
+			},
 		},
 	},
 })
@@ -54,6 +60,20 @@ export default function RegisterPage() {
 				>
 					Crear Cuenta
 				</Typography>
+
+				<div
+					className={css({
+						display: 'flex',
+						flexWrap: 'wrap',
+						alignItems: 'center',
+						gap: 1,
+					})}
+				>
+					<span>¿Ya tienes una cuenta?</span>
+					<Button variant="link">
+						<b>Inicia Sesión</b>
+					</Button>
+				</div>
 			</header>
 
 			<form
@@ -99,22 +119,9 @@ export default function RegisterPage() {
 					type="submit"
 					rounded="full"
 				>
-					Registrarse
+					Continuar
 				</Button>
 			</form>
-
-			<div
-				className={css({
-					display: 'flex',
-					flexWrap: 'wrap',
-					alignItems: 'center',
-					justifyContent: 'center',
-					gap: 1,
-				})}
-			>
-				<span>¿Ya tienes una cuenta?</span>
-				<Button variant="link">Inicia sesión</Button>
-			</div>
 
 			<Separator>o</Separator>
 

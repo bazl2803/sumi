@@ -14,6 +14,18 @@ export const InputRecipe = css({
 			_osDark: 'gray.400'
 		}
 	},
+	_autofill: {
+		boxShadow: {
+			base: '0 0 0px 1000px oklch(92.8% 0.006 264.531) inset',
+			_osDark: '0 0 0px 1000px oklch(21% 0.034 264.665) inset'
+		},
+		transition: 'background-color 5000s ease-in-out 0s',
+		WebkitTextFillColor: { base: 'black', _osDark: 'white' },
+		color: {
+			base: 'gray.400',
+			_osDark: 'gray.400'
+		}
+	},
 })
 
 export const InputVariantsRecipe = cva({
