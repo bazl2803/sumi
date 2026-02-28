@@ -7,7 +7,7 @@ import z from "zod";
 
 // --- Schemas -----------------------------------------------------
 
-export const signUpSchema = z
+const signUpSchema = z
     .object({
         name: z
             .string()

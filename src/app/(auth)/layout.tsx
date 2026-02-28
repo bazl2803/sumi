@@ -1,6 +1,9 @@
+'use client'
 import type { ReactNode } from 'react'
 import { sva } from 'panda/css'
 import Image from 'next/image'
+import {Separator} from "@/components";
+import {SocialLogin} from "@/app/(auth)/_components/social-login";
 
 type LayoutProps = {
 	children: ReactNode
@@ -30,6 +33,9 @@ const AuthLayoutStyles = sva({
 			},
 		},
 		form: {
+			display: 'flex',
+			flexDirection: 'column',
+			rowGap: 4,
 			gridColumn: '2',
 			padding: 8,
 			lg: {
@@ -57,7 +63,13 @@ export default function AuthLayout({ children }: LayoutProps) {
 				width={100}
 				height={100}
 			/>
-			<div className={styles.form}>{children}</div>
+			<div className={styles.form}>
+				{children}
+
+				<Separator>o</Separator>
+
+				<SocialLogin />
+			</div>
 		</div>
 	)
 }

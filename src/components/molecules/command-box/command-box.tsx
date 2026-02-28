@@ -1,5 +1,5 @@
 'use client'
-import { clsx } from 'clsx'
+import { cx } from 'panda/css'
 import { CommandBoxRecipe } from './command-box.recipes'
 import React from 'react'
 import { CommandBoxContext } from './command-box-context'
@@ -9,7 +9,11 @@ import { CommandBoxContent } from './components/command-box-content'
 
 interface CommandBoxProps extends React.ComponentPropsWithoutRef<'div'> {}
 
-export const CommandBox = ({ className, children, ...props }: CommandBoxProps) => {
+export const CommandBox = ({
+	className,
+	children,
+	...props
+}: CommandBoxProps) => {
 	// State
 	const [open, setOpen] = React.useState(false)
 	const [inputValue, setInputValue] = React.useState<string>('')
@@ -34,9 +38,9 @@ export const CommandBox = ({ className, children, ...props }: CommandBoxProps) =
 		>
 			<div
 				{...props}
-				className={clsx(styles.root, className)}
+				className={cx(styles.root, className)}
 			>
-				<CommandBoxTrigger />
+				<CommandBoxTrigger className={styles.root} />
 				<div className={styles.dropdown}>{children}</div>
 			</div>
 		</CommandBoxContext.Provider>
