@@ -1,6 +1,6 @@
 import { css } from 'panda/css'
 import { StoreNavbar } from './_components/store-navbar'
-import { StoreAppbar } from './_components/store_appbar'
+import { StoreAppbar } from './_components/store-appbar'
 
 /**
  * Layout for all store pages

@@ -1,5 +1,5 @@
 import { css } from 'panda/css'
-import { DashboardNavbar } from './_components/dashboard-navbar'
+import { DashboardNavbar } from './dashboard/_components/dashboard-navbar'
 
 interface DashboardLayoutProps {
 	children: React.ReactNode
