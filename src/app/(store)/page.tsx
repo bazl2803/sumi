@@ -11,7 +11,7 @@ export default function HomePage() {
 				gap: 8,
 			})}
 		>
-			<Slideshow images={['/slide2.png']} />
+			<Slideshow images={['/slide1.png']} />
 			<LandingCategories />
 			<Typography
 				variant="title2"

@@ -1,8 +1,8 @@
 'use client'
 
+import React from 'react'
 import {Button, Field, Hint, Input, Logo, Typography} from '@/components'
 import {css, sva} from 'panda/css'
-import React from 'react'
 import {signUpEmailAction, SignUpState} from '../_actions/signup-email.action'
 
 // --- Styles -----------------------------------------------------------------

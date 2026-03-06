@@ -6,12 +6,16 @@ import { StoreAppbar } from './_components/store-appbar'
  * Layout for all store pages
  */
 
-export default function StoreLayout({ children }: { children: React.ReactNode }) {
+export default function StoreLayout({
+	children,
+}: {
+	children: React.ReactNode
+}) {
 	return (
 		<div
 			className={css({
 				height: 'full',
-				spaceY: 4,
+				spaceY: 8,
 			})}
 		>
 			<StoreAppbar />

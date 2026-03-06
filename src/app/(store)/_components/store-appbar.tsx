@@ -1,12 +1,18 @@
 'use client'
 
-import clsx from 'clsx'
-import { sva } from 'panda/css'
-import { Button, ButtonIcon, CommandBoxInput, Group, InputAddon, Logo } from '@/components'
-import { CommandBox } from '@/components/molecules/command-box/command-box'
+import {
+	Button,
+	ButtonIcon,
+	CommandBox,
+	CommandBoxInput,
+	Group,
+	InputAddon,
+	Logo,
+} from '@/components'
 import { CommandBoxContent } from '@/components/molecules/command-box/components/command-box-content'
 import { IconSearch, IconShoppingCart } from '@tabler/icons-react'
-import Link from 'next/link'
+import { cx, sva } from 'panda/css'
+import { StoreAppbarProfileButton } from './store-appbar-profile-button'
 
 const styles = sva({
 	slots: ['root', 'commandBox', 'shoppingCartButton'],
@@ -14,24 +20,19 @@ const styles = sva({
 		root: {
 			display: 'flex',
 			flexWrap: 'nowrap',
-			alignItems: 'center',
+			alignItems: 'top',
 			justifyContent: 'space-between',
 			flexDirection: 'row',
 			position: 'sticky',
 			top: '0',
 			zIndex: '100',
-			paddingY: 4,
-			paddingX: 8,
-			gap: '4',
+			paddingBlock: 4,
+			paddingInline: 8,
 			backgroundColor: {
 				base: 'white',
 				_osDark: 'black',
 			},
-			borderBottom: '1px solid',
-			borderColor: {
-				base: 'neutral.100',
-				_osDark: 'neutral.900',
-			},
+			gap: 4,
 		},
 		commandBox: {
 			display: 'none',
@@ -53,7 +54,7 @@ export const StoreAppbar = ({ className }: { className?: string }) => {
 	const classes = styles()
 
 	return (
-		<div className={clsx(classes.root, className)}>
+		<div className={cx(classes.root, className)}>
 			<Logo />
 
 			<CommandBox className={classes.commandBox}>
@@ -68,6 +69,7 @@ export const StoreAppbar = ({ className }: { className?: string }) => {
 				</CommandBox.InputGroup>
 				<CommandBoxContent />
 			</CommandBox>
+
 			<Group>
 				<Button
 					className={classes.shoppingCartButton}
@@ -77,14 +79,7 @@ export const StoreAppbar = ({ className }: { className?: string }) => {
 				>
 					<ButtonIcon icon={IconShoppingCart} />
 				</Button>
-				<Link href="/register">
-					<Button
-						variant="solid"
-						rounded="full"
-					>
-						Registrarse
-					</Button>
-				</Link>
+				<StoreAppbarProfileButton />
 			</Group>
 		</div>
 	)

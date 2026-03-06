@@ -1,7 +1,6 @@
 'use client'
-import { auth } from '@/lib/auth'
-import { headers } from 'next/headers'
 import {
+	Avatar,
 	Button,
 	Dropdown,
 	DropdownContent,
@@ -10,22 +9,39 @@ import {
 } from '@/components'
 import { IconDoorExit, IconLayoutDashboard } from '@tabler/icons-react'
 import { useRouter } from 'next/navigation'
+import { authClient } from '@/lib/auth/auth-client'
+import { SignOutAction } from '@/app/(auth)/_actions/signout.action'
 
-export const StoreAppbarProfileButton = async () => {
+// --- Component ---------------------------
+export const StoreAppbarProfileButton = () => {
 	const router = useRouter()
 
-	const session = await auth.api.getSession({
-		headers: await headers(),
-	})
+	const { data: session, refetch } = authClient.useSession()
 
 	if (!session) {
-		return <Button>Iniciar Sesión</Button>
+		return (
+			<Button
+				rounded="full"
+				onClick={() => router.push('/register')}
+			>
+				Iniciar Sesión
+			</Button>
+		)
 	}
 
 	return (
 		<Dropdown>
 			<DropdownTrigger>
-				<Button>{session.user.name}</Button>
+				<Button
+					variant="outline"
+					rounded="full"
+				>
+					<Avatar
+						src={session.user.image!}
+						fallback={session.user.name![0]}
+					/>
+					{session.user.name}
+				</Button>
 			</DropdownTrigger>
 			<DropdownContent>
 				<DropdownItem
@@ -36,6 +52,11 @@ export const StoreAppbarProfileButton = async () => {
 				<DropdownItem
 					icon={IconDoorExit}
 					label="Cerrar Sesión"
+					destructive
+					onClick={async () => {
+						await SignOutAction()
+						await refetch()
+					}}
 				/>
 			</DropdownContent>
 		</Dropdown>

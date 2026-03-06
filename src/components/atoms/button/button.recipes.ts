@@ -69,7 +69,8 @@ export const ButtonRecipe = cva({
 				minWidth: '36px',
 			},
 			md: {
-				padding: 2,
+				paddingBlock: 2,
+				paddingInline: 1,
 				fontSize: 'md',
 				height: 10,
 				minWidth: '40px',
