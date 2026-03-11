@@ -1,5 +1,5 @@
 'use client'
-import { cx } from 'panda/css'
+import { css, cx } from 'panda/css'
 import { CommandBoxRecipe } from './command-box.recipes'
 import React from 'react'
 import { CommandBoxContext } from './command-box-context'
@@ -38,7 +38,7 @@ export const CommandBox = ({
 		>
 			<div
 				{...props}
-				className={cx(styles.root, className)}
+				className={cx(css(styles.root), className)}
 			>
 				<CommandBoxTrigger className={styles.root} />
 				<div className={styles.dropdown}>{children}</div>

@@ -1,7 +1,8 @@
 'use server'
-
+import 'server-only';
 import { auth } from "@/lib/auth";
 import { z } from "zod";
+import { headers } from "next/headers";
 
 // Zod schema for email and password
 const signInSchema = z.object({
@@ -9,7 +10,7 @@ const signInSchema = z.object({
     password: z.string().min(6),
 });
 
-export async function signInWithEmail(formData: FormData) {
+export async function signInWithEmail(_prevState: any, formData: FormData) {
     const email = formData.get('email') as string;
     const password = formData.get('password') as string;
 
@@ -23,6 +24,7 @@ export async function signInWithEmail(formData: FormData) {
         body: {
             email,
             password,
-        }
+        },
+        headers: await headers()
     })
 }

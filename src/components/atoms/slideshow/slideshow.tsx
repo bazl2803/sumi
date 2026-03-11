@@ -22,12 +22,11 @@ const SlideshowStyles = sva({
 		},
 		viewport: {
 			position: 'relative',
-			aspectRatio: '1280/500',
+			aspectRatio: { base: '1280/500', md: '1280/480' },
 			width: 'full',
 		},
 		image: {
 			objectFit: 'cover',
-			objectPosition: 'top',
 		},
 	},
 })

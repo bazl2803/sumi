@@ -7,7 +7,6 @@ export const ButtonRecipe = cva({
 		alignItems: 'center',
 		borderRadius: 'lg',
 		fontWeight: 500,
-		gap: 1,
 	},
 	variants: {
 		variant: {
@@ -65,21 +64,39 @@ export const ButtonRecipe = cva({
 			sm: {
 				padding: 1,
 				fontSize: 'sm',
-				height: '36px',
-				minWidth: '36px',
+				height: 9,
+				minWidth: 9,
+				'& button-addon': {
+					height: 7
+				},
+				'& button-icon': {
+					width: 7
+				}
 			},
 			md: {
 				paddingBlock: 2,
 				paddingInline: 1,
 				fontSize: 'md',
 				height: 10,
-				minWidth: '40px',
+				minWidth: 10,
+				'& button-addon': {
+					height: 8
+				},
+				'& button-icon': {
+					width: 8
+				}
 			},
 			lg: {
 				padding: 3,
 				fontSize: 'lg',
-				height: '56px',
-				minWidth: '56px',
+				height: 11,
+				minWidth: 11,
+				'& > button-addon, & > button-icon': {
+					height: 9
+				},
+				'& > button-icon': {
+					width: 9
+				}
 			},
 			icon: {
 				padding: 1,
@@ -100,10 +117,14 @@ export const ButtonLabelRecipe = css({
 	justifyContent: 'center',
 	alignItems: 'center',
 	fontWeight: 500,
-	gap: 2,
-	padding: 1,
+	paddingInline: 2,
 })
 
 export const ButtonIconRecipe = css({
-	padding: 1,
+	display: 'flex',
+	justifyContent: 'center',
+	alignItems: 'center',
+	rounded: 'full',
+	h: 8,
+	w: 8,
 })

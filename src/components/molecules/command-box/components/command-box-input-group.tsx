@@ -5,5 +5,5 @@ interface CommandBoxInputGroupProps {
 }
 
 export const CommandBoxInputGroup = ({ children }: CommandBoxInputGroupProps) => {
-	return <InputGroup>{children}</InputGroup>
+	return <InputGroup variant={'filled'}>{children}</InputGroup>
 }

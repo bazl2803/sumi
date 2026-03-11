@@ -14,6 +14,7 @@ export const LandingCategories = async () => {
 			className={flex({
 				direction: 'column',
 				gap: 4,
+				paddingInline: 4,
 			})}
 		>
 			<Typography

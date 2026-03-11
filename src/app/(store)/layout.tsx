@@ -15,7 +15,7 @@ export default function StoreLayout({
 		<div
 			className={css({
 				height: 'full',
-				spaceY: 8,
+				spaceY: 4,
 			})}
 		>
 			<StoreAppbar />
@@ -23,7 +23,6 @@ export default function StoreLayout({
 				className={css({
 					maxWidth: '7xl',
 					marginInline: 'auto',
-					paddingInline: 8,
 				})}
 			>
 				{children}
