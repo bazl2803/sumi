@@ -1,9 +1,27 @@
-import { InputGroup } from '@/components/atoms/input/components/input-group'
+import React from 'react'
+import { css, cx } from 'panda/css'
 
-interface CommandBoxInputGroupProps {
-	children: React.ReactNode
-}
+interface CommandBoxInputGroupProps
+	extends React.ComponentPropsWithRef<'div'> {}
 
-export const CommandBoxInputGroup = ({ children }: CommandBoxInputGroupProps) => {
-	return <InputGroup variant={'filled'}>{children}</InputGroup>
+const CommandBoxInputGroupStyles = css({
+	display: 'flex',
+	flexWrap: 'nowrap',
+	flexDirection: 'row',
+	gap: 4,
+	paddingInline: 4,
+	height: '40px',
+	'& .command-box-input': {
+		flex: 1,
+		paddingBlock: 0,
+	},
+})
+
+export const CommandBoxInputGroup = (props: CommandBoxInputGroupProps) => {
+	return (
+		<div
+			{...props}
+			className={cx('command-box-input-group', CommandBoxInputGroupStyles)}
+		/>
+	)
 }

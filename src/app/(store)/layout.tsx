@@ -15,7 +15,6 @@ export default function StoreLayout({
 		<div
 			className={css({
 				height: 'full',
-				spaceY: 4,
 			})}
 		>
 			<StoreAppbar />

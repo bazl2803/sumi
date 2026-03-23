@@ -1,18 +1,10 @@
 'use client'
 
-import {
-	Button,
-	ButtonIcon,
-	CommandBox,
-	CommandBoxInput,
-	Group,
-	InputAddon,
-	Logo,
-} from '@/components'
-import { CommandBoxContent } from '@/components/molecules/command-box/components/command-box-content'
+import { Button, ButtonIcon, CommandBox, Group, Logo } from '@/components'
 import { IconSearch, IconShoppingCart } from '@tabler/icons-react'
-import { cx, sva } from 'panda/css'
+import { css, cx, sva } from 'panda/css'
 import { AccountControl } from './account-control'
+import { StoreCommandBox } from '@/app/(store)/_components/store-command-box'
 
 const styles = sva({
 	slots: ['root', 'commandBox', 'wrapper', 'shoppingCartButton'],
@@ -26,17 +18,20 @@ const styles = sva({
 			top: '0',
 			zIndex: '100',
 			paddingBlock: 4,
-			backgroundColor: {
-				base: 'white/85',
-				_osDark: 'black/85',
-			},
+			paddingBottom: 8,
+			overflowY: 'visible',
+			bgLinear: 'to-b',
+			gradientFrom: { base: 'neutral.50', _osDark: 'neutral.950' },
+			gradientVia: { base: 'neutral.50/50', _osDark: 'neutral.950/50' },
+			gradientViaPosition: '75%',
+			gradientTo: { base: 'neutral.50/0', _osDark: 'neutral.950/0' },
 			gap: 4,
 		},
 		commandBox: {
 			display: 'none',
 			lg: {
 				display: 'block',
-				width: 'md',
+				width: 'lg',
 			},
 		},
 		shoppingCartButton: {
@@ -63,25 +58,11 @@ export const StoreAppbar = ({ className }: { className?: string }) => {
 	const classes = styles()
 
 	return (
-		<div
-			className={cx(classes.root, className)}
-			style={{ backdropFilter: 'blur(10px)' }}
-		>
+		<div className={cx(classes.root, className)}>
 			<div className={classes.wrapper}>
 				<Logo />
 
-				<CommandBox className={classes.commandBox}>
-					<CommandBox.InputGroup>
-						<InputAddon>
-							<IconSearch size={18} />
-						</InputAddon>
-
-						<CommandBoxInput placeholder="¿Qué es lo que buscas?" />
-
-						<InputAddon>Alt+P</InputAddon>
-					</CommandBox.InputGroup>
-					<CommandBoxContent />
-				</CommandBox>
+				<StoreCommandBox className={classes.commandBox} />
 
 				<Group>
 					<Button

@@ -62,7 +62,8 @@ export const ButtonRecipe = cva({
 		},
 		size: {
 			sm: {
-				padding: 1,
+				paddingBlock: 1,
+				paddingInline: 1,
 				fontSize: 'sm',
 				height: 9,
 				minWidth: 9,
@@ -75,7 +76,7 @@ export const ButtonRecipe = cva({
 			},
 			md: {
 				paddingBlock: 2,
-				paddingInline: 1,
+				paddingInline: 1.5,
 				fontSize: 'md',
 				height: 10,
 				minWidth: 10,
@@ -87,7 +88,8 @@ export const ButtonRecipe = cva({
 				}
 			},
 			lg: {
-				padding: 3,
+				paddingBlock: 3,
+				paddingInline: 2,
 				fontSize: 'lg',
 				height: 11,
 				minWidth: 11,

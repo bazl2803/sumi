@@ -13,10 +13,12 @@ const ServiceCard = ({ children }: { children: React.ReactNode }) => {
 				display: 'flex',
 				flexDirection: 'column',
 				alignItems: 'center',
-				backgroundColor: { base: 'neutral.100', _osDark: 'neutral.900' },
+				backgroundColor: { base: 'neutral.100', _osDark: 'neutral.950' },
+				border: { base: '1px solid', _osDark: '1px solid' },
+				borderColor: { base: 'neutral.200', _osDark: 'neutral.800' },
 				padding: 4,
 				gap: 2,
-				borderRadius: 'xl',
+				borderRadius: '2xl',
 			})}
 		>
 			{children}

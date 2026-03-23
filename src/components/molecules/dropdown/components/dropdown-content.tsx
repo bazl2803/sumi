@@ -10,6 +10,7 @@ export const DropdownContent = ({ ...props }: DropdownContentProps) => {
 		<div
 			{...props}
 			className={DropdownContentRecipe({ open })}
+			style={{ backdropFilter: 'blur(4px)' }}
 		/>
 	)
 }

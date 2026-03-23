@@ -24,20 +24,19 @@ export const DropdownContentRecipe = cva({
 	base: {
 		display: 'flex',
 		flexDirection: 'column',
-		gap: 4,
 		position: 'absolute',
 		top: '0',
 		right: 0,
 		zIndex: 10,
+		padding: 2,
 		width: 'fit-content',
 		scale: 0,
 		transition: 'scale 0.2s ease-in-out',
 		transformOrigin: 'top right',
 		pointerEvents: 'none',
-		backgroundColor: { base: 'gray.50', _osDark: 'gray.800' },
+		backgroundColor: { base: 'neutral.50/70', _osDark: 'neutral.800/70' },
 		border: '1px solid',
-		borderColor: { 'base': 'gray.200', _osDark: 'gray.800' },
-
+		borderColor: { 'base': 'neutral.200/90', _osDark: 'neutral.800/90' },
 		backdropBlur: 'xs',
 		borderRadius: '3xl',
 		boxShadow: 'lg',
@@ -57,12 +56,19 @@ export const DropdownItemRecipe = cva({
 		display: 'flex',
 		flexWrap: 'nowrap',
 		alignItems: 'center',
-		paddingInline: '6',
-		paddingBlock: '2.5',
+		paddingInline: 4,
+		paddingBlock: 2,
 		textWrap: 'nowrap',
 		gap: 4,
 		transition: 'background-color 0.2s ease-in-out',
 		cursor: 'pointer',
+		borderRadius: '2xl',
+		_hover: {
+			backgroundColor: {
+				base: 'neutral.300/30',
+				_osDark: 'neutral.700/30'
+			},
+		}
 	},
 	variants: {
 		destructive: {
