@@ -2,10 +2,10 @@ import { css, sva } from "panda/css";
 
 export const SidebarRecipe = css({
   display: "grid",
-  gridTemplateColumns: { base: "1fr", lg: "240px 1fr" },
+  minW: "min(240px, 100%)",
   columnGap: 4,
-  height: "100dvh",
-  width: "100dvw",
+  height: "full",
+  width: "auto",
   padding: 2
 });
 
@@ -24,6 +24,10 @@ export const SidebarTrailRecipe = css({
   justifyContent: "space-between",
   height: "full",
   borderRadius: "xl",
+  outline: "1px solid",
+  outlineColor: { base: "white", _osDark: "black" },
+  boxShadow: "xl",
+  backgroundColor: { base: "neutral.50/70", _osDark: "neutral.950/70" },
 });
 
 export const SidebarHeaderRecipe = sva({
@@ -89,6 +93,7 @@ export const SidebarItemRecipe = sva({
   base: {
     root: {
       cursor: "pointer",
+      textDecoration: "none",
     },
     label: {
       fontWeight: "500",

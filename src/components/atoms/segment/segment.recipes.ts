@@ -1,14 +1,22 @@
 import { cva } from "panda/css";
 
-export const SegmentContainerRecipe = cva({
+export const SegmentRecipe = cva({
     base: {
         display: "flex",
         backgroundColor: { base: "neutral.100", _osDark: "neutral.900" },
         padding: 1,
         borderRadius: "lg",
         gap: 1,
-        width: "fit-content",
     },
+    variants: {
+        fullWidth: {
+            true: { width: "full", justifyContent: "space-between" },
+            false: { width: "fit-content" },
+        }
+    },
+    defaultVariants: {
+        fullWidth: false,
+    }
 });
 
 export const SegmentItemRecipe = cva({
@@ -21,6 +29,8 @@ export const SegmentItemRecipe = cva({
         cursor: "pointer",
         transition: "all 0.2s",
         color: { base: "neutral.500", _osDark: "neutral.400" },
+        width: "full",
+        textAlign: "center",
         _hover: {
             color: { base: "black", _osDark: "white" },
         },

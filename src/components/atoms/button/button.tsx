@@ -1,5 +1,8 @@
+'use client'
 import React from 'react'
-import { ButtonIcon, ButtonLabel, ButtonRecipe } from '@/components'
+import { ButtonRecipe } from './button.recipes'
+import { ButtonIcon } from './components/button-icon'
+import { ButtonLabel } from './components/button-label'
 import { ButtonAddon } from './components/button-addon'
 import clsx from 'clsx'
 
@@ -9,19 +12,21 @@ interface ButtonProps extends React.ComponentPropsWithRef<'button'> {
 	size?: 'sm' | 'md' | 'lg' | 'icon'
 }
 
-export const Button = ({
+export function Button({
 	className,
 	variant,
 	size,
 	rounded,
 	...props
-}: ButtonProps) => (
-	<button
-		className={clsx(ButtonRecipe({ variant, size, rounded }), className)}
-		{...props}
-	/>
-)
+}: ButtonProps) {
+	return (
+		<button
+			className={clsx(ButtonRecipe({ variant, size, rounded }), className)}
+			{...props}
+		/>
+	)
+}
 
-Button.Addon = ButtonAddon
-Button.Label = ButtonLabel
 Button.Icon = ButtonIcon
+Button.Label = ButtonLabel
+Button.Addon = ButtonAddon

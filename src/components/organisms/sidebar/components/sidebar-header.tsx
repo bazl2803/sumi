@@ -7,7 +7,7 @@ interface SidebarHeaderProps {
   children: React.ReactNode;
 }
 
-export const SidebarHeader = ({ children }: SidebarHeaderProps) => {
+const SidebarHeaderComponent = ({ children }: SidebarHeaderProps) => {
   return (
     <div className={SidebarHeaderRecipe().root}>
       {children}
@@ -26,4 +26,11 @@ const SidebarHeaderLogo = ({ className, ...props }: ImageProps) => {
   );
 };
 
+interface SidebarHeaderWithCompound extends React.FC<SidebarHeaderProps> {
+  Logo: typeof SidebarHeaderLogo
+}
+
+const SidebarHeader = SidebarHeaderComponent as SidebarHeaderWithCompound
 SidebarHeader.Logo = SidebarHeaderLogo;
+
+export { SidebarHeader, SidebarHeaderLogo }

@@ -65,15 +65,15 @@ export const DropdownItemRecipe = cva({
 		borderRadius: '2xl',
 		_hover: {
 			backgroundColor: {
-				base: 'neutral.300/30',
-				_osDark: 'neutral.700/30'
+				base: 'black/10',
+				_osDark: 'white/10'
 			},
 		}
 	},
 	variants: {
 		destructive: {
 			true: {
-				color: 'red',
+				color: { base: 'red.500', _osDark: 'red.600' },
 			}
 		}
 	}

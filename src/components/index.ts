@@ -25,6 +25,7 @@ export * from './atoms/surface/surface.recipes';
 export * from './atoms/surface/surface';
 export * from './atoms/typography/typography.recipes';
 export * from './atoms/typography/typography';
+export * from './molecules/appbar/appbar';
 export * from './molecules/card/card.recipes';
 export * from './molecules/card/card';
 export * from './molecules/carousel/carousel.recipes';

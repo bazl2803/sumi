@@ -102,8 +102,8 @@ export const ButtonRecipe = cva({
 			},
 			icon: {
 				padding: 1,
-				height: '40px',
-				width: '40px',
+				height: 10,
+				width: 10,
 			},
 		},
 	},
@@ -119,6 +119,7 @@ export const ButtonLabelRecipe = css({
 	justifyContent: 'center',
 	alignItems: 'center',
 	fontWeight: 500,
+	textWrap: 'nowrap',
 	paddingInline: 2,
 })
 

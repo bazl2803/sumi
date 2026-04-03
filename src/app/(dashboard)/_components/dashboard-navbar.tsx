@@ -3,12 +3,12 @@ import { Navbar, NavbarItem } from '@/components'
 import { IconHome, IconPackage, IconTruckDelivery, IconUserShield } from '@tabler/icons-react'
 import { usePathname } from 'next/navigation'
 
-export const DashboardNavbar = () => {
+export const DashboardNavbar = ({ className }: { className?: string }) => {
 	const links = [
 		{ href: '/dashboard', label: 'Inicio', icon: IconHome },
 		{ href: '/dashboard/products', label: 'Productos', icon: IconPackage },
 		{ href: '/dashboard/orders', label: 'Pedidos', icon: IconTruckDelivery },
-		{ href: '/dashboard/users', label: 'Usuarios', icon: IconUserShield },
+		{ href: '/manage/credentials', label: 'Credenciales', icon: IconUserShield },
 	]
 
 	function isLinkSelected(href: string): boolean {
@@ -19,7 +19,7 @@ export const DashboardNavbar = () => {
 	}
 
 	return (
-		<Navbar>
+		<Navbar className={className}>
 			{links.map((link) => (
 				<NavbarItem
 					key={link.href}

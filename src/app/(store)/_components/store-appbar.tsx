@@ -1,6 +1,6 @@
 'use client'
 
-import { Button, ButtonIcon, CommandBox, Group, Logo } from '@/components'
+import { Appbar, Button, ButtonIcon, CommandBox, Group, Logo } from '@/components'
 import { IconSearch, IconShoppingCart } from '@tabler/icons-react'
 import { css, cx, sva } from 'panda/css'
 import { AccountControl } from './account-control'
@@ -15,7 +15,7 @@ const styles = sva({
 			alignItems: 'top',
 			flexDirection: 'row',
 			position: 'sticky',
-			top: '0',
+			top: 0,
 			zIndex: '100',
 			paddingBlock: 4,
 			paddingBottom: 8,
@@ -58,8 +58,8 @@ export const StoreAppbar = ({ className }: { className?: string }) => {
 	const classes = styles()
 
 	return (
-		<div className={cx(classes.root, className)}>
-			<div className={classes.wrapper}>
+		<Appbar>
+			<Appbar.Line>
 				<Logo />
 
 				<StoreCommandBox className={classes.commandBox} />
@@ -76,7 +76,7 @@ export const StoreAppbar = ({ className }: { className?: string }) => {
 
 					<AccountControl />
 				</Group>
-			</div>
-		</div>
+			</Appbar.Line>
+		</Appbar>
 	)
 }

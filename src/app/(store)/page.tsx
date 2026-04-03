@@ -25,7 +25,7 @@ export default function HomePage() {
 				variant="title2"
 				emphasized
 			>
-				✨Destacados
+				✨Destacado
 			</Typography>
 		</div>
 	)

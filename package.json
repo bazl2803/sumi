@@ -4,7 +4,7 @@
 	"private": true,
 	"scripts": {
 		"prepare": "panda codegen",
-		"dev": "next dev -H 0.0.0.0",
+		"dev": "next dev",
 		"build": "next build",
 		"start": "next start",
 		"lint": "biome check",
@@ -15,7 +15,7 @@
 		"better-auth": "^1.4.20",
 		"clsx": "^2.1.1",
 		"mongodb": "^7.0.0",
-		"next": "16.1.4",
+		"next": "16.2.1",
 		"react": "19.2.3",
 		"react-dom": "19.2.3",
 		"zod": "^4.3.5"

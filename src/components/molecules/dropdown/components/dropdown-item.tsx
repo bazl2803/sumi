@@ -1,3 +1,5 @@
+'use client'
+
 import { Icon as TablerIcon } from '@tabler/icons-react'
 import { DropdownItemRecipe } from '../dropdown.recipes'
 import { useDropdown } from '../dropdown-context'

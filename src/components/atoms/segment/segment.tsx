@@ -1,31 +1,29 @@
 'use client'
-import React from 'react'
-import { SegmentContainerRecipe, SegmentItemRecipe } from './segment.recipes'
+import React from "react";
+import { SegmentContext } from "./segment-context";
+import { SegmentRecipe } from "./segment.recipes";
+import { cx } from "panda/css";
+import { SegmentItem } from "./components/segment-item";
 
-interface SegmentOption {
-	label: string
-	value: string
+// --- Props ------------------------------------------------------------------
+interface SegmentProps extends React.ComponentPropsWithRef<'div'> {
+    defaultValue: string,
+    fullWidth?: boolean
 }
 
-interface SegmentProps {
-	options: SegmentOption[]
-	value: string
-	onChange: (value: string) => void
+// --- JSX --------------------------------------------------------------------
+export function Segment({ className, defaultValue, fullWidth, ...props }: SegmentProps) {
+    const [active, setActive] = React.useState(defaultValue)
+
+    return (
+        <SegmentContext.Provider value={{ active, setActive }}>
+            <div {...props} className={cx(
+                'segment',
+                SegmentRecipe({ fullWidth }),
+                className
+            )} />
+        </SegmentContext.Provider>
+    )
 }
 
-export const Segment: React.FC<SegmentProps> = ({ options, value, onChange }) => {
-	return (
-		<div className={SegmentContainerRecipe()}>
-			{options.map((option) => (
-				<button
-					key={option.value}
-					type="button"
-					onClick={() => onChange(option.value)}
-					className={SegmentItemRecipe({ active: value === option.value })}
-				>
-					{option.label}
-				</button>
-			))}
-		</div>
-	)
-}
+Segment.Item = SegmentItem

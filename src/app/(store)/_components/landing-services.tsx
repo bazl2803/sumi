@@ -33,7 +33,7 @@ export const LandingServices = () => {
 		<div
 			className={css({
 				display: 'grid',
-				gridTemplateColumns: 'repeat(4, 1fr)',
+				gridTemplateColumns: '1fr 1fr',
 				gap: 4,
 				paddingInline: 4,
 				marginTop: 8,

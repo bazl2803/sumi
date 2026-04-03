@@ -2,7 +2,7 @@
 
 import clsx from 'clsx'
 import React from 'react'
-import { NavbarItemRecipe } from '@/components'
+import { NavbarItemRecipe } from '../navbar.recipes'
 import Link from 'next/link'
 import { TablerIcon } from '@tabler/icons-react'
 

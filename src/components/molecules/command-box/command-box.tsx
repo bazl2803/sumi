@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 import { cx, sva } from 'panda/css'
 import { CommandBoxInputGroup } from './components/command-box-input-group'
@@ -38,7 +40,7 @@ const CommandBoxStyles = sva({
 })
 
 // --- Component --------------------------------------------------------------
-export const CommandBox = ({
+const CommandBoxComponent = ({
 	className,
 	children,
 	...props
@@ -60,9 +62,21 @@ export const CommandBox = ({
 	)
 }
 
+interface CommandBoxWithCompound extends React.FC<CommandBoxProps> {
+	InputGroup: typeof CommandBoxInputGroup
+	Input: typeof CommandBoxInput
+	Addon: typeof CommandBoxAddon
+	Dropdown: typeof CommandBoxDropdown
+	DropdownItem: typeof CommandBoxDropdownItem
+	DropdownItemGroup: typeof CommandBoxDropdownItemGroup
+}
+
+const CommandBox = CommandBoxComponent as CommandBoxWithCompound
 CommandBox.InputGroup = CommandBoxInputGroup
 CommandBox.Input = CommandBoxInput
 CommandBox.Addon = CommandBoxAddon
 CommandBox.Dropdown = CommandBoxDropdown
 CommandBox.DropdownItem = CommandBoxDropdownItem
 CommandBox.DropdownItemGroup = CommandBoxDropdownItemGroup
+
+export { CommandBox, CommandBoxInputGroup, CommandBoxInput, CommandBoxAddon, CommandBoxDropdown, CommandBoxDropdownItem, CommandBoxDropdownItemGroup }

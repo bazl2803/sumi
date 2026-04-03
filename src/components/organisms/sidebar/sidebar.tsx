@@ -1,19 +1,22 @@
 'use client'
-import clsx from 'clsx'
+
 import React from 'react'
 import { SidebarRecipe, SidebarContext } from '@/components'
+import { cx } from 'panda/css'
 
-interface SidebarProps extends React.ComponentPropsWithRef<'div'> {}
+// --- Props -----------------------------------------------------------
+interface SidebarProps extends React.ComponentPropsWithRef<'div'> { }
 
-export const Sidebar: React.FC<SidebarProps> = ({ className, children, ...props }) => {
+// --- JSX --------------------------------------------------------------------
+export function Sidebar({ className, children, ...props }: SidebarProps) {
 	const [selected, setSelected] = React.useState<string>('')
 	const [isOpen, setIsOpen] = React.useState<boolean>(true)
 
 	return (
 		<SidebarContext.Provider value={{ selected, setSelected, isOpen, setIsOpen }}>
 			<div
-				className={clsx(SidebarRecipe, className)}
 				{...props}
+				className={cx('sidebar', SidebarRecipe, className)}
 			>
 				{children}
 			</div>
