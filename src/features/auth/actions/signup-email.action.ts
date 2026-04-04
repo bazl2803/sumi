@@ -1,7 +1,7 @@
 "use server"
 
-import z from "zod"
-import { SignUpInput, signUpSchema } from "../schemas"
+import { signUpSchema } from "@/app/(auth)/_schemas/signup.schema";
+import { SignUpInput } from "@/app/(auth)/_types/signup.types";
 import { auth } from "@/lib/auth"
 
 type FieldErrors<T> = {
@@ -29,7 +29,7 @@ export async function signUpEmailAction(_prevState: SignUpState, formData: FormD
         return {
             success: false,
             message: "Something went wrong",
-            errors: parsed
+            errors: parsed.error.flatten().fieldErrors as FieldErrors<SignUpInput>
         }
 
 
