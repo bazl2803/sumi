@@ -17,7 +17,7 @@ const CredetialsManagementPageStyles = sva({
             maxWidth: '7xl',
             marginInline: 'auto',
             width: 'full',
-            paddingInline: { base: 4, md: 8 },
+            paddingInline: { base: 2, md: 8 },
         },
         roleCard: {
             display: 'flex',

@@ -3,7 +3,8 @@
 import React from 'react'
 import {Button, Field, Hint, Input, Logo, Typography} from '@/components'
 import {css, sva} from 'panda/css'
-import {signUpEmailAction, SignUpState} from '../_actions/signup-email.action'
+import {signUpEmailAction} from '../_actions/signup-email.action'
+import { SignUpState } from '../_types/signup.types'
 
 // --- Styles -----------------------------------------------------------------
 const RegisterPageStyles = sva({

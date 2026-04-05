@@ -12,9 +12,9 @@ export const StatValue: React.FC<StackValueProps> = ({
   return (
     <span
       className={clsx(
-        TypographyRecipe({ role: "title2", emphasized: true }),
+        TypographyRecipe({ variant: "title2", emphasized: true }),
         StatValueRecipe,
-        className
+        className,
       )}
       {...props}
     />

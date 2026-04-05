@@ -1,27 +1,14 @@
-import { Group, List, ListItem, Table, Typography } from "@/components"
-import { getRoles } from "@/features/roles/actions/getRoles"
-import { IconShieldFilled } from "@tabler/icons-react"
-import { sva } from "panda/css"
+import { Group, Table } from "@/components"
+import { getRolesCollectionStats } from "@/features/roles/actions/getRolesCollectionStats"
+import { IconKey, IconUser } from "@tabler/icons-react"
+import { css, sva } from "panda/css"
 
 // --- Styles -----------------------------------------------------------------
 const RolesListStyles = sva({
-    slots: ['roleCard'],
+    slots: ['table'],
     base: {
-        roleCard: {
-            display: 'flex',
-            flexDirection: 'row',
-            flexWrap: 'nowrap',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            gap: 4,
-            cursor: 'pointer',
-            transition: 'background-color 0.2s',
-            rounded: 'lg',
-            _hover: {
-                backgroundColor: { base: 'neutral.100', _osDark: 'neutral.950' },
-                outline: '1px solid',
-                outlineColor: { base: 'neutral.200', _osDark: 'neutral.800' },
-            }
+        table: {
+            userSelect: 'none',
         }
     }
 })
@@ -29,27 +16,37 @@ const RolesListStyles = sva({
 // --- JSX --------------------------------------------------------------------
 export const RolesList = async () => {
     const classes = RolesListStyles()
-    const roles = await getRoles()
+    const roles = await getRolesCollectionStats()
 
     if (!roles) {
-        return <p>No roles found</p>
+        return <p>No se encontraron roles</p>
     }
 
     return (
-        <Table>
+        <Table className={classes.table}>
             <thead>
                 <tr>
-                    <th>Nombre</th>
-                    <th>Permisos</th>
-                    <th>Usuarios</th>
+                    <th className={css({ width: 'full' })}>Nombre</th>
+                    <th>Perm.</th>
+                    <th>Usr.</th>
                 </tr>
             </thead>
             <tbody>
                 {roles.map((role) => (
                     <tr key={role._id}>
                         <td>{role.name}</td>
-                        <td>{role.permissions?.length || 0}</td>
-                        <td>{1}</td>
+                        <td>
+                            <Group>
+                                <IconKey size={20} />
+                                {role.permissionsCount}
+                            </Group>
+                        </td>
+                        <td>
+                            <Group>
+                                <IconUser size={20} />
+                                {role.userAssignedCount}
+                            </Group>
+                        </td>
                     </tr>
                 ))}
             </tbody>
