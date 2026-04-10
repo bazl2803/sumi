@@ -41,9 +41,12 @@ export const ButtonRecipe = cva({
 				outlineWidth: 1,
 				outlineStyle: 'solid',
 				outlineColor: { base: 'neutral.200', _osDark: 'neutral.700' },
-				backgroundColor: { base: 'neutral.100', _osDark: 'neutral.900' },
+				backgroundColor: { base: 'white/30', _osDark: 'black/30' },
+				backdropFilter: 'auto',
+				backdropBlur: 'xs',
+				boxShadow: 'xl',
 				_hover: {
-					backgroundColor: { base: 'neutral.200', _osDark: 'neutral.950' },
+					backgroundColor: { base: 'white/50', _osDark: 'black/50' },
 				},
 			},
 			soft: {
@@ -100,10 +103,20 @@ export const ButtonRecipe = cva({
 					width: 9
 				}
 			},
-			icon: {
+			'icon-sm': {
+				padding: 1,
+				height: 8,
+				width: 8,
+			},
+			'icon-md': {
 				padding: 1,
 				height: 10,
 				width: 10,
+			},
+			'icon-lg': {
+				padding: 1,
+				height: 12,
+				width: 12,
 			},
 		},
 	},

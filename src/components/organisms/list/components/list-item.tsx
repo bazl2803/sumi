@@ -1,17 +1,17 @@
-'use client'
+"use client";
 
-import clsx from 'clsx'
-import { ListItemRecipe } from '../list.recipe'
+import { ListItemRecipe } from "../list.recipe";
+import { cx } from "panda/css";
 
-interface ListItemProps extends React.ComponentPropsWithRef<'li'> {
-	selected?: boolean
+interface ListItemProps extends React.ComponentPropsWithRef<"li"> {
+  selected?: boolean;
 }
 
 export const ListItem = ({ className, selected, ...props }: ListItemProps) => {
-	return (
-		<li
-			className={clsx(ListItemRecipe({ selected }), className)}
-			{...props}
-		/>
-	)
-}
+  return (
+    <li
+      className={cx("listItem", ListItemRecipe({ selected }), className)}
+      {...props}
+    />
+  );
+};

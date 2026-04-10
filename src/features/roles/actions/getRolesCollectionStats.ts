@@ -1,16 +1,9 @@
 "use server";
 
 import { getDb } from "@/lib/mongo";
+import { RoleWithStats } from "../types/role";
 
-// Type definition for your returned data
-export type RoleSummary = {
-    _id: string;
-    name: string;
-    permissionsCount: number;
-    userAssignedCount: number;
-};
-
-export async function getRolesCollectionStats(): Promise<RoleSummary[]> {
+export async function getRolesCollectionStats(): Promise<RoleWithStats[]> {
     try {
         const database = await getDb();
         const roles = database.collection("role");
@@ -55,7 +48,7 @@ export async function getRolesCollectionStats(): Promise<RoleSummary[]> {
         const results = await roles.aggregate(pipeline).toArray();
 
         // Cast to our TypeScript interface
-        return results as unknown as RoleSummary[];
+        return results as unknown as RoleWithStats[];
     } catch (error) {
         console.error("Database error:", error);
         throw new Error("Failed to fetch roles statistics.");

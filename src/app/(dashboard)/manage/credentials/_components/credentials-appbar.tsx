@@ -1,9 +1,9 @@
 "use client";
 
-import { Appbar, Stack, Typography } from "@/components";
-import { BackButton } from "./back-button";
+import { Appbar, Button, Stack, Typography } from "@/components";
 import { css, sva } from "panda/css";
 import { NewRoleButton } from "./new-role-button";
+import { IconMenu } from "@tabler/icons-react";
 
 const CredentialsAppbarStyles = sva({
   slots: ["mobile", "desktop"],
@@ -25,12 +25,14 @@ export const CredentialsAppbar = () => {
 const MobileCredentialsAppbar = () => (
   <Appbar className={CredentialsAppbarStyles().mobile}>
     <Appbar.Line>
-      <BackButton />
+      <Button size="icon-sm" variant="soft" rounded="full">
+        <Button.Icon icon={IconMenu} />
+      </Button>
       <Typography variant="headline">Credenciales</Typography>
-      <div></div>
+      <Button size="icon-sm" variant="soft" rounded="full" disabled />
     </Appbar.Line>
 
-    <Appbar.Line className={css({ "& button": { width: "full" } })}>
+    <Appbar.Line className={css({ "& > button": { width: "full" } })}>
       <NewRoleButton />
     </Appbar.Line>
   </Appbar>
