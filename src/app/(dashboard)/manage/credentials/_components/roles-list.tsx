@@ -1,10 +1,9 @@
 "use client";
 
-import { Group, List, ListItem, Stack, Typography } from "@/components";
+import { List } from "@/components";
 import { RoleWithStats } from "@/features/roles/types/role";
-import { IconKey, IconUser } from "@tabler/icons-react";
-import { useRouter } from "next/navigation";
-import { css, sva } from "panda/css";
+import { sva } from "panda/css";
+import { RolesListCard } from "./roles-list-card";
 
 // --- Props ------------------------------------------------------------------
 interface RolesListProps {
@@ -16,10 +15,7 @@ const RolesListStyles = sva({
   slots: ["list", "listItem"],
   base: {
     list: {
-      md: {
-        borderRight: "1px solid",
-        borderColor: { base: "neutral.200", _dark: "neutral.800" },
-      },
+      paddingInline: 8,
     },
     listItem: {
       userSelect: "none",
@@ -36,9 +32,8 @@ const RolesListStyles = sva({
 });
 
 // --- JSX --------------------------------------------------------------------
-export const RolesList = ({ roles }: RolesListProps) => {
+export function RolesList({ roles }: RolesListProps) {
   const classes = RolesListStyles();
-  const router = useRouter();
 
   if (!roles) {
     return <p>No se encontraron roles</p>;
@@ -47,36 +42,8 @@ export const RolesList = ({ roles }: RolesListProps) => {
   return (
     <List className={classes.list}>
       {roles.map((role) => (
-        <ListItem
-          className={classes.listItem}
-          key={role._id}
-          onClick={() => router.push(`/manage/credentials/${role._id}`)}
-        >
-          <div className={css({ gridArea: "name" })}>
-            <Typography variant="title2" emphasized>
-              {role.name}
-            </Typography>
-          </div>
-          <div className={css({ gridArea: "permissions" })}>
-            <Stack>
-              <Typography variant="caption1">Permisos</Typography>
-              <Group>
-                <IconKey size={20} />
-                {role.permissionsCount}
-              </Group>
-            </Stack>
-          </div>
-          <div className={css({ gridArea: "users" })}>
-            <Stack>
-              <Typography variant="caption1">Usuarios</Typography>
-              <Group>
-                <IconUser size={20} />
-                {role.userAssignedCount}
-              </Group>
-            </Stack>
-          </div>
-        </ListItem>
+        <RolesListCard key={role._id} role={role} />
       ))}
     </List>
   );
-};
+}

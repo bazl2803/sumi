@@ -1,8 +1,22 @@
-"use client";
+import { Typography } from "@/components";
+import { css } from "panda/css";
 
-import { useParams } from "next/navigation";
+interface ManageCredentialsDetailPageProps {
+  params: Promise<{ id: string }>;
+}
 
-export default function ManageCredentialsDetailPage() {
-  const { id } = useParams<{ id: string }>();
-  return <div>{id}</div>;
+const ManageCredentialsDetailPageStyles = css({
+  padding: 8,
+});
+
+export default async function ManageCredentialsDetailPage({
+  params,
+}: ManageCredentialsDetailPageProps) {
+  const { id } = await params;
+
+  return (
+    <div className={ManageCredentialsDetailPageStyles}>
+      <Typography variant="title1">{id}</Typography>
+    </div>
+  );
 }
