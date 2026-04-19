@@ -1,56 +1,53 @@
-import { Carousel, CarouselItem, Stack, Typography } from '@/components'
-import { getAllCategories } from '@/features/categories/actions/getAllCategories'
-import Image from 'next/image'
-import { css } from 'panda/css'
-import { flex } from 'panda/patterns'
+import { getCategoriesAction } from "@/actions/category.actions";
+import { Carousel, CarouselItem, Stack, Typography } from "@/components";
+import Image from "next/image";
+import { css } from "panda/css";
+import { flex } from "panda/patterns";
 
 export const LandingCategories = async () => {
-	// Get Categories from MongoDB
-	const categories = await getAllCategories()
+  // Get Categories from MongoDB
+  const categories = await getCategoriesAction();
 
-	// Map Categories to Carousel Items
-	return (
-		<div
-			className={flex({
-				direction: 'column',
-				gap: 4,
-				paddingInline: 4,
-			})}
-		>
-			<Typography
-				variant="title2"
-				emphasized
-			>
-				Categorias
-			</Typography>
+  // Map Categories to Carousel Items
+  return (
+    <div
+      className={flex({
+        direction: "column",
+        gap: 4,
+        paddingInline: 4,
+      })}
+    >
+      <Typography variant="title2" emphasized>
+        Categorias
+      </Typography>
 
-			<Carousel>
-				{categories.map((category) => (
-					<CarouselItem key={category._id.toString()}>
-						<Stack
-							css={{
-								alignItems: 'center',
-								justifyContent: 'center',
-							}}
-						>
-							<Image
-								className={css({
-									minWidth: 24,
-									minHeight: 24,
-									width: 24,
-									height: 24,
-									borderRadius: 'xl',
-								})}
-								src={category.thumbnail}
-								alt={category.name}
-								width={200}
-								height={200}
-							/>
-							<Typography variant="caption1">{category.name}</Typography>
-						</Stack>
-					</CarouselItem>
-				))}
-			</Carousel>
-		</div>
-	)
-}
+      <Carousel>
+        {categories.map((category) => (
+          <CarouselItem key={category._id.toString()}>
+            <Stack
+              css={{
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <Image
+                className={css({
+                  minWidth: 24,
+                  minHeight: 24,
+                  width: 24,
+                  height: 24,
+                  borderRadius: "xl",
+                })}
+                src={category.thumbnail}
+                alt={category.name}
+                width={200}
+                height={200}
+              />
+              <Typography variant="caption1">{category.name}</Typography>
+            </Stack>
+          </CarouselItem>
+        ))}
+      </Carousel>
+    </div>
+  );
+};

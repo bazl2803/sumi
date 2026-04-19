@@ -13,7 +13,7 @@ export const CredentialsAppbar = () => {
           <Button.Icon icon={IconMenu} />
         </Button>
         <Typography variant="headline">Credenciales</Typography>
-        <Button size="icon-sm" variant="soft" rounded="full" disabled />
+        <Button size="icon-sm" variant="ghost" rounded="full" disabled />
       </Appbar.Line>
 
       <Appbar.Line className={css({ "& > button": { width: "full" } })}>

@@ -3,9 +3,8 @@ import Image, { ImageProps } from "next/image";
 import React from "react";
 import { AvatarRecipe } from "./avatar.recipes";
 
-interface AvatarProps
-  extends Omit<ImageProps, "width" | "height" | "alt" | "src"> {
-  src?: string;
+interface AvatarProps extends Omit<ImageProps, "width" | "height" | "src"> {
+  src?: string | null;
   fallback?: string;
   size?: "xs" | "sm" | "md" | "lg";
 }
@@ -25,7 +24,6 @@ export const Avatar: React.FC<AvatarProps> = ({
         <Image
           className={styles.image}
           src={src}
-          alt={src}
           width={100}
           height={100}
           {...props}

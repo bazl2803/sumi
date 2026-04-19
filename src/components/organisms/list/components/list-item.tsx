@@ -10,7 +10,7 @@ interface ListItemProps extends React.ComponentPropsWithRef<"li"> {
 export const ListItem = ({ className, selected, ...props }: ListItemProps) => {
   return (
     <li
-      className={cx("listItem", ListItemRecipe({ selected }), className)}
+      className={cx("list-item", ListItemRecipe({ selected }), className)}
       {...props}
     />
   );

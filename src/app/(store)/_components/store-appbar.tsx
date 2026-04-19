@@ -69,7 +69,7 @@ export const StoreAppbar = ({ className }: { className?: string }) => {
             className={classes.shoppingCartButton}
             variant="subtle"
             rounded="full"
-            size="icon"
+            size="icon-sm"
           >
             <ButtonIcon icon={IconShoppingCart} />
           </Button>

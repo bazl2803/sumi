@@ -1,6 +1,6 @@
 import { sva } from "panda/css";
 import { CredentialsSidebar } from "./_components/credentials-sidebar";
-import { getRolesCollectionStats } from "@/features/roles/actions/getRolesCollectionStats";
+import { getRolesWithAssignedUsersAction } from "@/actions/role.actions";
 
 export const ManageCredentialsLayoutStyles = sva({
   slots: ["root", "sidebar", "detail"],
@@ -28,12 +28,12 @@ export default async function ManageCredentialsLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const roles = await getRolesCollectionStats();
+  const { data: roles } = await getRolesWithAssignedUsersAction();
   const classes = ManageCredentialsLayoutStyles();
 
   return (
     <div className={classes.root}>
-      <CredentialsSidebar roles={roles} />
+      <CredentialsSidebar roles={roles!} />
       <div className={classes.detail}>{children}</div>
     </div>
   );

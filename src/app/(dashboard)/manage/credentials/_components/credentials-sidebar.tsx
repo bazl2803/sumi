@@ -4,7 +4,7 @@ import { RolesList } from "./roles-list";
 import { cva } from "panda/css";
 import { CredentialsAppbar } from "./credentials-appbar";
 import { useParams } from "next/navigation";
-import { RoleWithStats } from "@/features/roles/types/role";
+import { RoleWithAssignedUsers } from "@/models/role.model";
 
 export const CredentialsSidebarStyles = cva({
   base: {
@@ -21,13 +21,17 @@ export const CredentialsSidebarStyles = cva({
   },
 });
 
-export function CredentialsSidebar({ roles }: { roles: RoleWithStats[] }) {
+export function CredentialsSidebar({
+  roles,
+}: {
+  roles?: RoleWithAssignedUsers[];
+}) {
   const roleId = useParams();
 
   return (
     <div className={CredentialsSidebarStyles({ hide: !!roleId.id })}>
       <CredentialsAppbar />
-      <RolesList roles={roles} />
+      <RolesList roles={roles ?? []} />
     </div>
   );
 }
