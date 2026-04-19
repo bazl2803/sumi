@@ -106,12 +106,15 @@ export function RolesListCard({ role, selected }: RoleCardProps) {
         <Stack>
           <Typography variant="caption1">Usuarios</Typography>
           <Group>
-            <IconUser size={20} />
-            <AvatarGroup>
-              {role.users?.map((user) => (
-                <Avatar src={user.image} alt={user.name} />
-              ))}
-            </AvatarGroup>
+            {role.users?.length > 0 ? (
+              <AvatarGroup>
+                {role.users?.map((user) => (
+                  <Avatar src={user.image} fallback={user.name?.[0]} />
+                ))}
+              </AvatarGroup>
+            ) : (
+              <Typography variant="caption2">No hay usuarios asignados</Typography>
+            )}
           </Group>
         </Stack>
       </div>

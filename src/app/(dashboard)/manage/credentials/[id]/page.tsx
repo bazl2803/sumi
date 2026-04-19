@@ -1,3 +1,4 @@
+import { getRoleByIdAction } from "@/actions/role.actions";
 import { Typography } from "@/components";
 import { css } from "panda/css";
 
@@ -13,10 +14,11 @@ export default async function ManageCredentialsDetailPage({
   params,
 }: ManageCredentialsDetailPageProps) {
   const { id } = await params;
+  const role = await getRoleByIdAction(id);
 
   return (
     <div className={ManageCredentialsDetailPageStyles}>
-      <Typography variant="title1">{id}</Typography>
+      <Typography variant="title1" emphasized>{role!.name}</Typography>
     </div>
   );
 }

@@ -15,14 +15,18 @@ const styles = css({
 });
 
 export const SocialLogin = () => {
+  async function handleSocialLogin(provider: "google" | "microsoft") {
+    await LoginSocialAction(provider);
+  };
+
   return (
     <div className={styles}>
-      <Button variant="outline" onClick={() => LoginSocialAction("google")}>
+      <Button variant="outline" onClick={() => handleSocialLogin("google")}>
         <Image src="/icons8-google.svg" alt="Google" width={20} height={20} />
         <ButtonLabel>Continuar con Google</ButtonLabel>
       </Button>
 
-      <Button variant="outline" onClick={() => LoginSocialAction("microsoft")}>
+      <Button variant="outline" onClick={() => handleSocialLogin("microsoft")}>
         <Image
           src="/icons8-microsoft.svg"
           alt="Microsoft"

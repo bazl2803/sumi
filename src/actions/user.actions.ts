@@ -96,22 +96,33 @@ export const LoginWithEmailAction = async (
 };
 
 export const LoginSocialAction = async (provider: "google" | "microsoft") => {
+  let url: string | null = null;
+
   try {
-    await auth.api.signInSocial({
+    const result = await auth.api.signInSocial({
       body: {
-        provider,
+        provider: provider,
         callbackURL: "/",
       },
       headers: await headers(),
     });
 
-    redirect("/");
+    url = result.url!;
   } catch (error) {
     return {
       success: false,
       message: "Failed to login.",
     };
   }
+
+  if (!url) {
+    return {
+      success: false,
+      message: `No redirect URL returned for provider: ${provider}`,
+    };
+  }
+
+  redirect(url);
 };
 
 export const logoutAction = async () => {
