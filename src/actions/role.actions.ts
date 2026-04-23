@@ -133,3 +133,26 @@ export const createRoleAction = async (
     };
   }
 };
+
+export const updateRolePermissionsAction = async (
+  roleId: string,
+  permissions: string[],
+) => {
+  try {
+    await roleCollection.updateOne(
+      { _id: new ObjectId(roleId) },
+      { $set: { permissions } },
+    );
+
+    return {
+      success: true,
+      message: "Role permissions updated successfully",
+    };
+  } catch (error) {
+    console.error("Error updating role permissions:", error);
+    return {
+      success: false,
+      message: "Error updating role permissions",
+    };
+  }
+};

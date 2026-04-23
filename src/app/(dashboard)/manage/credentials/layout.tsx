@@ -3,7 +3,7 @@ import { CredentialsSidebar } from "./_components/credentials-sidebar";
 import { getRolesWithAssignedUsersAction } from "@/actions/role.actions";
 
 export const ManageCredentialsLayoutStyles = sva({
-  slots: ["root", "sidebar", "detail"],
+  slots: ["root", "sidebar"],
   base: {
     root: {
       md: {
@@ -15,10 +15,6 @@ export const ManageCredentialsLayoutStyles = sva({
         `,
         height: "100%",
       },
-    },
-    detail: {
-      display: "none",
-      md: { display: "block" },
     },
   },
 });
@@ -34,7 +30,7 @@ export default async function ManageCredentialsLayout({
   return (
     <div className={classes.root}>
       <CredentialsSidebar roles={roles!} />
-      <div className={classes.detail}>{children}</div>
+      {children}
     </div>
   );
 }

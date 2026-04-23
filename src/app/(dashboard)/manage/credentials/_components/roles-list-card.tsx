@@ -6,7 +6,7 @@ import { AvatarGroup } from "@/components/molecules/avatar/components/avatar-gro
 import { RoleWithAssignedUsers } from "@/models/role.model";
 import { IconKey, IconShield, IconUser } from "@tabler/icons-react";
 import { useRouter } from "next/navigation";
-import { sva } from "panda/css";
+import { css, sva } from "panda/css";
 
 interface RoleCardProps {
   role: RoleWithAssignedUsers;
@@ -18,14 +18,15 @@ const RoleCardStyles = sva({
   base: {
     root: {
       display: "grid",
-      gridTemplateColumns: "1fr auto",
+      gridTemplateColumns: "1fr 1fr",
       gridTemplateRows: "1fr 1fr",
       gridTemplateAreas: `
         "name name"
         "permissions users"
       `,
       padding: "1rem",
-      gap: 2,
+      rowGap: 4,
+      columnGap: 2,
       border: "1px solid",
       borderColor: {
         base: "neutral.200",
@@ -60,7 +61,7 @@ const RoleCardStyles = sva({
       gap: "0.5rem",
     },
     icon: {
-      backgroundColor: "neutral.100",
+      backgroundColor: "neutral.200",
       borderRadius: "full",
       color: "neutral.900",
       padding: 2,
@@ -87,16 +88,23 @@ export function RolesListCard({ role, selected }: RoleCardProps) {
         <div className={classes.icon}>
           <IconShield size={20} />
         </div>
-        <Typography variant="headline">{role.name}</Typography>
+        <Typography variant="title3" emphasized>
+          {role.name}
+        </Typography>
       </div>
 
       <div className={classes.permissions}>
         <Stack>
-          <Typography variant="caption1">Permisos</Typography>
+          <Typography
+            className={css({ color: "neutral.500" })}
+            variant="caption1"
+          >
+            Permisos
+          </Typography>
           <Group>
-            <IconKey size={20} />
-            <Typography variant="caption2">
-              {role.permissions?.length}
+            <IconKey size={24} />
+            <Typography variant="body">
+              {role.permissions?.length || 0}
             </Typography>
           </Group>
         </Stack>
@@ -104,7 +112,12 @@ export function RolesListCard({ role, selected }: RoleCardProps) {
 
       <div className={classes.users}>
         <Stack>
-          <Typography variant="caption1">Usuarios</Typography>
+          <Typography
+            className={css({ color: "neutral.500" })}
+            variant="caption1"
+          >
+            Usuarios
+          </Typography>
           <Group>
             {role.users?.length > 0 ? (
               <AvatarGroup>
@@ -113,7 +126,7 @@ export function RolesListCard({ role, selected }: RoleCardProps) {
                 ))}
               </AvatarGroup>
             ) : (
-              <Typography variant="caption2">No hay usuarios asignados</Typography>
+              <Typography variant="body">Sin asignar</Typography>
             )}
           </Group>
         </Stack>

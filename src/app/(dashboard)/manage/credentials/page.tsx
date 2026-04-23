@@ -3,10 +3,13 @@ import { css } from "panda/css";
 
 // --- Styles -----------------------------------------------------------------
 const ManageCredentialsPageStyles = css({
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  height: "100%",
+  display: "none",
+  md: {
+    justifyContent: "center",
+    alignItems: "center",
+    height: "100%",
+  }
+
 });
 
 // --- JSX --------------------------------------------------------------------
