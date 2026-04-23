@@ -1,7 +1,9 @@
 "use server";
 
 import { getDb } from "@/lib/mongo";
-import { Permission } from "@/models/permission.model";
+import { ObjectId } from "mongodb";
+import { Permission, PermissionSchema } from "@/models/permission.model";
+import z from "zod";
 
 const db = await getDb();
 const permissionsCollection = db.collection<Permission>("permission");
@@ -9,14 +11,22 @@ const permissionsCollection = db.collection<Permission>("permission");
 export const getAllPermissionsAction = async (): Promise<Permission[]> => {
   const permissions = await permissionsCollection.find().toArray();
 
-  return permissions;
+  const serializedPermissions: Permission[] = z
+    .array(PermissionSchema)
+    .parse(permissions);
+
+  return serializedPermissions;
 };
 
 export const getPermissionByIdAction = async (id: string) => {
   try {
-    const permission = await permissionsCollection.findOne({ _id: id });
+    const permission = await permissionsCollection.findOne({ _id: new ObjectId(id) as any });
 
-    return permission as unknown as Permission;
+    if (!permission) {
+      return null;
+    }
+
+    return PermissionSchema.parse(permission);
   } catch (error) {
     console.error("Error fetching permission:", error);
     return null;

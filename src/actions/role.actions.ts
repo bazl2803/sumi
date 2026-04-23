@@ -3,6 +3,7 @@ import "server-only";
 import {
   CreateRoleSchema,
   Role,
+  RoleSchema,
   RoleWithAssignedUsers,
   RoleWithAssignedUsersSchema,
 } from "@/models/role.model";
@@ -23,11 +24,12 @@ interface RoleActionState {
 export const getRolesAction = async (): Promise<RoleActionState> => {
   try {
     const roles = await roleCollection.find().toArray();
+    const serializedRoles = z.array(RoleSchema).parse(roles);
 
     return {
       success: true,
       message: "Roles fetched successfully",
-      data: roles as unknown as Role[],
+      data: serializedRoles,
     };
   } catch (error) {
     console.error("Error fetching roles:", error);
@@ -91,11 +93,15 @@ export const getRolesWithAssignedUsersAction = async () => {
   }
 };
 
-export const getRoleByIdAction = async (id: string) => {
+export const getRoleByIdAction = async (id: string): Promise<Role | null> => {
   try {
     const role = await roleCollection.findOne({ _id: new ObjectId(id) });
 
-    return role as unknown as Role;
+    if (!role) {
+      return null;
+    }
+
+    return RoleSchema.parse(role);
   } catch (error) {
     console.error("Error fetching role:", error);
     return null;
@@ -106,19 +112,32 @@ export const createRoleAction = async (
   formData: FormData,
 ): Promise<RoleActionState> => {
   try {
-    const role = CreateRoleSchema.safeParse(formData);
+    const data = Object.fromEntries(formData);
+    const result = CreateRoleSchema.safeParse(data);
 
-    if (!role.success) {
+    if (!result.success) {
       return {
         success: false,
         message: "Please correct the errors and try again.",
+        errors: result.error.flatten().fieldErrors,
       };
     }
 
-    const newRole = (await roleCollection.insertOne(role)) as unknown as Role;
+    const roleToInsert = {
+      ...result.data,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      permissions: [],
+    };
+
+    const insertResult = await roleCollection.insertOne(roleToInsert as any);
+    const newRole = {
+      ...roleToInsert,
+      _id: insertResult.insertedId.toString(),
+    };
 
     return {
-      data: newRole,
+      data: newRole as Role,
       success: true,
       message: "Sucessfully added role",
     };

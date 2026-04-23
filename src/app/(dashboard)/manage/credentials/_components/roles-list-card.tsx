@@ -1,6 +1,6 @@
 "use client";
 
-import { Group, ListItem, Stack, Typography } from "@/components";
+import { Group, Stack, Typography } from "@/components";
 import { Avatar } from "@/components/molecules/avatar/avatar";
 import { AvatarGroup } from "@/components/molecules/avatar/components/avatar-group";
 import { RoleWithAssignedUsers } from "@/models/role.model";
@@ -78,11 +78,10 @@ export function RolesListCard({ role, selected }: RoleCardProps) {
   const router = useRouter();
 
   return (
-    <ListItem
+    <li
       className={classes.root}
       key={role._id}
       onClick={() => router.push(`/manage/credentials/${role._id}`)}
-      selected={selected}
     >
       <div className={classes.name}>
         <div className={classes.icon}>
@@ -131,6 +130,6 @@ export function RolesListCard({ role, selected }: RoleCardProps) {
           </Group>
         </Stack>
       </div>
-    </ListItem>
+    </li>
   );
 }

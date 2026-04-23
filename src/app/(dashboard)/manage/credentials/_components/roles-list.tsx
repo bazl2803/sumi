@@ -1,6 +1,5 @@
 "use client";
 
-import { List } from "@/components";
 import { RoleWithAssignedUsers } from "@/models/role.model";
 import { sva } from "panda/css";
 import { RolesListCard } from "./roles-list-card";
@@ -44,10 +43,10 @@ export function RolesList({ roles }: RolesListProps) {
   }
 
   return (
-    <List className={classes.list}>
+    <li className={classes.list}>
       {roles.map((role) => (
         <RolesListCard key={role._id} role={role} selected={role._id === id} />
       ))}
-    </List>
+    </li>
   );
 }

@@ -1,9 +1,8 @@
 import { getRoleByIdAction } from "@/actions/role.actions";
 import { Appbar, Segment, SegmentItem, Typography } from "@/components";
 import { css } from "panda/css";
-import { PermissionItem, PermissionsList } from "./_components/permission-list";
-import { getAllPermissionsAction } from "@/actions/permission.actions";
 import { PermissionsPage } from "./_components/permissions-page";
+import { getAllPermissionsAction } from "@/actions/permission.actions";
 
 interface ManageCredentialsDetailPageProps {
   params: Promise<{ id: string }>;
@@ -18,6 +17,7 @@ export default async function ManageCredentialsDetailPage({
 }: ManageCredentialsDetailPageProps) {
   const { id } = await params;
   const role = await getRoleByIdAction(id);
+  const permissions = await getAllPermissionsAction();
 
   if (!role) {
     return null;
@@ -47,7 +47,7 @@ export default async function ManageCredentialsDetailPage({
           paddingInline: 4,
         })}
       >
-        <PermissionsPage role={role} />
+        <PermissionsPage role={role} permissions={permissions} />
       </div>
     </div>
   );

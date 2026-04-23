@@ -12,9 +12,15 @@ export const UpdateRolePermissionsSchema = z.object({
 });
 
 export const RoleSchema = CreateRoleSchema.extend({
-  _id: z.instanceof(ObjectId).transform((id) => id.toString()),
+  _id: z
+    .union([z.instanceof(ObjectId), z.string()])
+    .transform((id) => id.toString()),
   permissions: z
-    .array(z.instanceof(ObjectId).transform((id) => id.toString()))
+    .array(
+      z
+        .union([z.instanceof(ObjectId), z.string()])
+        .transform((id) => id.toString()),
+    )
     .optional(),
   createdAt: z.date().default(() => new Date()),
   updatedAt: z.date().default(() => new Date()),
