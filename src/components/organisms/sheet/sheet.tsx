@@ -1,7 +1,8 @@
-import { Button } from "@/components";
-import { IconX } from "@tabler/icons-react";
+"use client";
 import { AnimatePresence, motion } from "framer-motion";
 import { css, sva } from "panda/css";
+import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 
 // --- Types ------------------------------------------------------------------
 type SheetSide = "left" | "right" | "top" | "bottom";
@@ -19,13 +20,8 @@ const SheetStyles = sva({
     backdrop: {
       position: "fixed",
       inset: 0,
-      backgroundColor: {
-        base: "neutral.50/50",
-        _osDark: "neutral.950/50",
-      },
-      zIndex: 100,
-      backdropFilter: "auto",
-      backdropBlur: "xs",
+      backgroundColor: "neutral.950/50",
+      zIndex: 200,
     },
     sheet: {
       position: "fixed",
@@ -35,9 +31,7 @@ const SheetStyles = sva({
       width: { base: "full", md: "400px" },
       bg: { base: "neutral.50/70", _osDark: "neutral.950/70" },
       boxShadow: "xl",
-      zIndex: 101,
-      backdropFilter: "auto",
-      backdropBlur: "xs",
+      zIndex: 201,
       borderWidth: 1,
       borderStyle: "solid",
       borderColor: {
@@ -122,6 +116,18 @@ const getMotionProps = (side: SheetSide) => {
   }
 };
 
+const SheetPortal = ({ children }: { children: React.ReactNode }) => {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null;
+
+  return createPortal(children, document.body);
+};
+
 // --- JSX --------------------------------------------------------------------
 export function Sheet({
   children,
@@ -131,28 +137,32 @@ export function Sheet({
 }: SheetProps) {
   const styles = SheetStyles({ side });
   const motionProps = getMotionProps(side);
-  return (
-    <AnimatePresence>
-      {isOpen && (
-        <>
-          <motion.div
-            className={styles.backdrop}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={onClose}
-          />
 
-          <motion.div
-            {...motionProps}
-            className={styles.sheet}
-            transition={{ type: "spring", damping: 25, stiffness: 200 }}
-          >
-            {children}
-          </motion.div>
-        </>
-      )}
-    </AnimatePresence>
+  return (
+    <SheetPortal>
+      <AnimatePresence>
+        {isOpen && (
+          <>
+            <motion.div
+              className={styles.backdrop}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={onClose}
+            />
+
+            <motion.div
+              {...motionProps}
+              className={styles.sheet}
+              style={{ backdropFilter: "blur(8px)" }}
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}
+            >
+              {children}
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+    </SheetPortal>
   );
 }
 
@@ -187,3 +197,4 @@ const SheetFooter = ({ children }: { children: React.ReactNode }) => (
 Sheet.Header = SheetHeader;
 Sheet.Content = SheetContent;
 Sheet.Footer = SheetFooter;
+Sheet.Portal = SheetPortal;

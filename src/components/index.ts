@@ -46,6 +46,7 @@ export * from "./molecules/stat/stat.recipes";
 export * from "./molecules/stat/stat";
 export * from "./molecules/tile/tile.recipes";
 export * from "./molecules/tile/tile";
+export * from "./molecules/list-view/list-view";
 export * from "./organisms/sheet/sheet";
 export * from "./organisms/sidebar/sidebar.context";
 export * from "./organisms/sidebar/sidebar.recipes";

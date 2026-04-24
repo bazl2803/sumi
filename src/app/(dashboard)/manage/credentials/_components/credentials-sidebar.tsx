@@ -10,9 +10,20 @@ export const CredentialsSidebarStyles = cva({
   base: {
     display: "flex",
     flexDirection: "column",
-    paddingBlock: 4,
+    paddingBottom: 4,
     borderRightColor: { base: "neutral.200", _osDark: "neutral.800" },
     borderRight: "1px solid",
+    overflowY: "auto",
+    scrollbarWidth: "none",
+    "&::-webkit-scrollbar": {
+      display: "none",
+    },
+    "&::-webkit-scrollbar-thumb": {
+      display: "none",
+    },
+    "&::-webkit-scrollbar-track": {
+      display: "none",
+    },
   },
   variants: {
     hide: {

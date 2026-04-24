@@ -25,7 +25,7 @@ const AppbarStyles = sva({
       gradientToPosition: "100%",
       position: "sticky",
       top: 0,
-      zIndex: 100,
+      zIndex: 10,
       paddingTop: { base: 4, md: 6 },
       paddingBottom: { base: 6, md: 8 },
     },

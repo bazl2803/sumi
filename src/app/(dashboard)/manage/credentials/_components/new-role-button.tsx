@@ -10,7 +10,15 @@ export const NewRoleButton = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
-      <Button rounded="full" onClick={() => setIsOpen(true)}>
+      <Button
+        className={css({
+          width: "100%",
+          backgroundColor: "yellow.400",
+          color: "black",
+        })}
+        rounded="full"
+        onClick={() => setIsOpen(true)}
+      >
         <Button.Icon icon={IconShieldPlus} />
         <Button.Label>Crear Nuevo Rol</Button.Label>
       </Button>

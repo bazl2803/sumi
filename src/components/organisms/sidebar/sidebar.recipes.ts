@@ -6,7 +6,7 @@ export const SidebarRecipe = css({
   columnGap: 4,
   height: "full",
   width: "auto",
-  padding: 2
+  padding: 2,
 });
 
 export const SidebarContentRecipe = css({
@@ -23,6 +23,17 @@ export const SidebarTrailRecipe = css({
   rowGap: 8,
   justifyContent: "space-between",
   height: "full",
+  overflowY: "auto",
+  scrollbarWidth: "none",
+  "&::-webkit-scrollbar": {
+    display: "none",
+  },
+  "&::-webkit-scrollbar-thumb": {
+    display: "none",
+  },
+  "&::-webkit-scrollbar-track": {
+    display: "none",
+  },
   borderRadius: "xl",
   outline: "1px solid",
   outlineColor: { base: "white", _osDark: "black" },
@@ -48,7 +59,7 @@ export const SidebarHeaderRecipe = sva({
 export const SidebarFooterRecipe = css({
   position: "sticky",
   bottom: 0,
-})
+});
 
 export const SidebarTriggerRecipe = css({
   display: "flex",

@@ -9,18 +9,25 @@ const db = await getDb();
 const permissionsCollection = db.collection<Permission>("permission");
 
 export const getAllPermissionsAction = async (): Promise<Permission[]> => {
-  const permissions = await permissionsCollection.find().toArray();
+  try {
+    const permissions = await permissionsCollection.find().toArray();
 
-  const serializedPermissions: Permission[] = z
-    .array(PermissionSchema)
-    .parse(permissions);
+    const serializedPermissions: Permission[] = z
+      .array(PermissionSchema)
+      .parse(permissions);
 
-  return serializedPermissions;
+    return serializedPermissions;
+  } catch (error) {
+    console.error("Error fetching permissions:", error);
+    return [];
+  }
 };
 
 export const getPermissionByIdAction = async (id: string) => {
   try {
-    const permission = await permissionsCollection.findOne({ _id: new ObjectId(id) as any });
+    const permission = await permissionsCollection.findOne({
+      _id: new ObjectId(id) as any,
+    });
 
     if (!permission) {
       return null;

@@ -78,7 +78,7 @@ export function RolesListCard({ role, selected }: RoleCardProps) {
   const router = useRouter();
 
   return (
-    <li
+    <div
       className={classes.root}
       key={role._id}
       onClick={() => router.push(`/manage/credentials/${role._id}`)}
@@ -130,6 +130,6 @@ export function RolesListCard({ role, selected }: RoleCardProps) {
           </Group>
         </Stack>
       </div>
-    </li>
+    </div>
   );
 }

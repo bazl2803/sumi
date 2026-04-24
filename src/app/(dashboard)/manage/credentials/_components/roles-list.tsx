@@ -4,6 +4,7 @@ import { RoleWithAssignedUsers } from "@/models/role.model";
 import { sva } from "panda/css";
 import { RolesListCard } from "./roles-list-card";
 import { useParams } from "next/navigation";
+import { ListView } from "@/components";
 
 // --- Props ------------------------------------------------------------------
 interface RolesListProps {
@@ -36,17 +37,17 @@ export function RolesList({ roles }: RolesListProps) {
   const classes = RolesListStyles();
   const { id } = useParams();
 
-  console.log(id);
-
   if (!roles) {
     return <p>No se encontraron roles</p>;
   }
 
   return (
-    <li className={classes.list}>
+    <ListView className={classes.list}>
       {roles.map((role) => (
-        <RolesListCard key={role._id} role={role} selected={role._id === id} />
+        <ListView.Item key={role._id}>
+          <RolesListCard role={role} selected={role._id === id} />
+        </ListView.Item>
       ))}
-    </li>
+    </ListView>
   );
 }

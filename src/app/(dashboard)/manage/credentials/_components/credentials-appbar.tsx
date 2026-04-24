@@ -8,15 +8,12 @@ export const CredentialsAppbar = () => {
   return (
     <Appbar>
       <Appbar.Line>
-        <Button size="icon-md" variant="soft" rounded="full">
-          <Button.Icon icon={IconMenu} />
-        </Button>
-
-        <NewRoleButton />
+        <Typography variant="title1" emphasized>
+          Credenciales
+        </Typography>
       </Appbar.Line>
-
       <Appbar.Line>
-        <Typography variant="title1" emphasized>Credenciales</Typography>
+        <NewRoleButton />
       </Appbar.Line>
     </Appbar>
   );
