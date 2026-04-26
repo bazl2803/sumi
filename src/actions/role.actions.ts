@@ -48,9 +48,14 @@ export const getRolesWithAssignedUsersAction = async () => {
   try {
     const pipeline = [
       {
+        $addFields: {
+          idString: { $toString: "$_id" },
+        },
+      },
+      {
         $lookup: {
           from: "user",
-          localField: "_id",
+          localField: "idString",
           foreignField: "roleId",
           as: "users",
         },
@@ -59,7 +64,21 @@ export const getRolesWithAssignedUsersAction = async () => {
         $project: {
           _id: 1,
           name: 1,
-          users: 1,
+          users: {
+            $map: {
+              input: "$users",
+              as: "user",
+              in: {
+                id: { $toString: "$$user._id" },
+                name: "$$user.name",
+                email: "$$user.email",
+                emailVerified: "$$user.emailVerified",
+                image: "$$user.image",
+                createdAt: "$$user.createdAt",
+                updatedAt: "$$user.updatedAt",
+              },
+            },
+          },
           permissions: 1,
           createdAt: 1,
           updatedAt: 1,

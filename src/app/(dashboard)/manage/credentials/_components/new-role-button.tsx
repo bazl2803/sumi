@@ -11,11 +11,7 @@ export const NewRoleButton = () => {
   return (
     <>
       <Button
-        className={css({
-          width: "100%",
-          backgroundColor: "yellow.400",
-          color: "black",
-        })}
+        className={css({ width: "full" })}
         rounded="full"
         onClick={() => setIsOpen(true)}
       >

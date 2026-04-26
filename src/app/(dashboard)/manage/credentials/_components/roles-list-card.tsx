@@ -119,11 +119,17 @@ export function RolesListCard({ role, selected }: RoleCardProps) {
           </Typography>
           <Group>
             {role.users?.length > 0 ? (
-              <AvatarGroup>
-                {role.users?.map((user) => (
-                  <Avatar src={user.image} fallback={user.name?.[0]} />
-                ))}
-              </AvatarGroup>
+              <Group>
+                <AvatarGroup>
+                  {role.users?.map((user) => (
+                    <Avatar
+                      key={user.id}
+                      src={user.image}
+                      fallback={user.name?.[0]}
+                    />
+                  ))}
+                </AvatarGroup>
+              </Group>
             ) : (
               <Typography variant="body">Sin asignar</Typography>
             )}
